@@ -1,10 +1,10 @@
 const {Routes, Router} = require('express');
 const router = Router();
-const model = require ('./functions');
+const { getAllVG } = require ('../controlers/videogames');
 
 router.get('/videogames', async (req, res) => {
     try {
-        res.json(await model.getAllVG())
+        res.json(await getAllVG())
     } catch (e) {
         res.send(e)
     }
