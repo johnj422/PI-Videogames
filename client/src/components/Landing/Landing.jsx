@@ -1,7 +1,7 @@
 function Landing(){
     return (
         <>
-        <h1>Hola</h1>
+        <h1>Videogames App</h1>
         </>
     )
 }
