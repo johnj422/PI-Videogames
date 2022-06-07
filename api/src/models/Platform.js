@@ -3,7 +3,7 @@ const { DataTypes, Op } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('genre', {
+  sequelize.define('platform', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -11,9 +11,13 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     name: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
+    image_background: {
+        type: DataTypes.TEXT
+
+    }
    
   },
   {

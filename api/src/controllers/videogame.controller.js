@@ -1,9 +1,11 @@
 
-function vgById (){
+function vgById (req, res){
+    const params = req.params
 
 }
 
-function createVg (){
+function createVg (req, res){
+    const body = req.body
 
 }
 

@@ -9,13 +9,14 @@ module.exports = (sequelize) => {
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
       unique: true,
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     released: {
@@ -26,10 +27,10 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    platforms: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    }, 
+    // platforms: {
+    //   type: DataTypes.TEXT,
+    //   allowNull: false,
+    // }, 
     background_image: {
       type: DataTypes.TEXT,
       defaultValue: 'https://i1.sndcdn.com/avatars-rdzlKhnEALWDHlBy-cB4kyA-t500x500.jpg', // cambiar imagen
