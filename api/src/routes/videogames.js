@@ -1,6 +1,6 @@
 const {Routes, Router} = require('express');
 const router = Router();
-const { getAllVG } = require ('../controlers/videogames');
+const { getAllVG } = require ('../controllers/videogames.controller');
 
 router.get('/videogames', async (req, res) => {
     try {
