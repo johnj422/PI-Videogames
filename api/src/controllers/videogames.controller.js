@@ -24,13 +24,22 @@ async function getAllVG (){
         gamesAPI.push({ name, genres, background_image })
         }
         
-        return gamesAPI
-    // let gamesDB = await Videogame.findAll({
-    //     attributes: [name, background_image], 
-    //     include: [Genre],
-    // })
-    // console.log(gamesDB)
-    // return gamesDB
+        //return gamesAPI;
+
+    let gamesDB = await Videogame.findAll({include: Genre});
+
+
+    gamesDB = gamesDB.map(game => {
+        console.log(game.dataValues)
+        let gameDBToShow = {
+            name: game.dataValues.name,
+            background_image: game.dataValues.background_image,
+            genres: game.dataValues.genres
+        }
+        return gameDBToShow
+    })
+    console.log(gamesDB)
+    return gamesAPI.concat(gamesDB)
 
 
     
