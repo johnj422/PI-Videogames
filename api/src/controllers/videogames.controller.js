@@ -24,6 +24,19 @@ async function getAllVG (){
         let { id, name, released, rating, platforms, genres, background_image } = game;
         gamesToShow.push({ id, name, released, rating, platforms, genres, background_image })
         }
+
+    // let gamesToShow = gamesProcesed.map(g => {
+    //     let newVg = { 
+    //         id: g.id, 
+    //         name: g.name, 
+    //         released: g.released, 
+    //         rating: g.rating, 
+    //         platforms: g.platforms, 
+    //         genres: g.genres, 
+    //         background_image: g.background_image
+    //      }
+    //      return newVg
+    // })
         return gamesToShow
     
 
