@@ -6,7 +6,7 @@ const { createVg } = require('../controllers/createVideogame.controller');
 router.post('/videogames', async (req, res) => {
     try {
         let newVG = await createVg(req.body);
-        res.json(newVG)
+        res.status(201).json(newVG)
     } catch (e) {
         res.send(e)
         

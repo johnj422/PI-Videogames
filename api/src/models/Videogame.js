@@ -20,8 +20,8 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     released: {
-      type: DataTypes.DATEONLY, // Validar porque en la API lo muestra como Sring
-      defaultValue: DataTypes.NOW,
+      type: DataTypes.STRING, // Validar porque en la API lo muestra como Sring
+      
     },
     rating: {
       type: DataTypes.FLOAT,
