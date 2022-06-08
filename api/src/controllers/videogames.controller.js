@@ -7,7 +7,6 @@ const { Genre, Videogame } = require("../db");
 
 async function getAllVG (){
 
-
     let hundredGames = [];
 
     for (let page =1; page < 6; page++){
@@ -19,26 +18,19 @@ async function getAllVG (){
    
     let gamesProcesed = gamesRaw.flat();
 
-    let gamesToShow = []
+    let gamesAPI = []
     for (const game of gamesProcesed) {
-        let { id, name, released, rating, platforms, genres, background_image } = game;
-        gamesToShow.push({ id, name, released, rating, platforms, genres, background_image })
+        let { name, genres, background_image } = game;
+        gamesAPI.push({ name, genres, background_image })
         }
-
-    // let gamesToShow = gamesProcesed.map(g => {
-    //     let newVg = { 
-    //         id: g.id, 
-    //         name: g.name, 
-    //         released: g.released, 
-    //         rating: g.rating, 
-    //         platforms: g.platforms, 
-    //         genres: g.genres, 
-    //         background_image: g.background_image
-    //      }
-    //      return newVg
+        
+        return gamesAPI
+    // let gamesDB = await Videogame.findAll({
+    //     attributes: [name, background_image], 
+    //     include: [Genre],
     // })
-        return gamesToShow
-    
+    // console.log(gamesDB)
+    // return gamesDB
 
 
     

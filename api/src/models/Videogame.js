@@ -27,10 +27,10 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    // platforms: {
-    //   type: DataTypes.TEXT,
-    //   allowNull: false,
-    // }, 
+    platforms: {
+      type: DataTypes.ARRAY(DataTypes.STRING),
+      allowNull: false,
+    }, 
     background_image: {
       type: DataTypes.TEXT,
       defaultValue: 'https://i1.sndcdn.com/avatars-rdzlKhnEALWDHlBy-cB4kyA-t500x500.jpg', // cambiar imagen
