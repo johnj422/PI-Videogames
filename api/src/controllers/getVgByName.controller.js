@@ -32,7 +32,9 @@ const findVideogameByName = async (name) => {
     })
     console.log(getByNameDB)
     //console.log(gameByNameModified)
+    if (gameByNameModified.length === 0 && getByNameDB.length === 0) throw `The videogame doesn't exists`
     return gameByNameModified.concat(getByNameDB)
 } 
+
 
 module.exports = findVideogameByName
