@@ -18,8 +18,16 @@ const findVideogameByName = async (name) => {
         //console.log(gameToShow)
         return gameToShow
     })
+
+    let getByNameDB = await Videogame.findAll({
+        where: {
+            name: name,
+        },
+        include: Genre 
+    })
+    console.log(getByNameDB)
     //console.log(gameByNameModified)
-    return gameByNameModified
+    return gameByNameModified.concat(getByNameDB)
 } 
 
 module.exports = findVideogameByName
