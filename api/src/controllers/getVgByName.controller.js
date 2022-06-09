@@ -11,9 +11,14 @@ const findVideogameByName = async (name) => {
     let gameByNameModified = gameByName.data.results.map(game => {
         //console.log(game.name)
         let gameToShow = {
+            id: game.id,
             name: game.name,
+            description: game.description,
+            released: game.released,
+            rating: game.rating,
+            platforms: game.platforms,
             background_image: game.background_image,
-            genres: game.genres
+            genres: game.genres,
         }
         //console.log(gameToShow)
         return gameToShow
