@@ -3,7 +3,7 @@ import { GET_ALL_VIDEOGAMES } from "./actions.js";
 
 const initialState = {
     videogames: [],
-    favoritos: []
+    
 }
 
 
