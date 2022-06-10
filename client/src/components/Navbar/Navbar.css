@@ -2,13 +2,39 @@
 
 .nav {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    flex-direction: column;
     background-color: rgb(56, 61, 61);
    
+}
+
+.topNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+input {
+    width: 20rem;
 }
 
 .title {
     cursor: pointer;
     color: gainsboro;
 }
+.bottom-nav {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    background-color: rgb(42, 42, 42);
+    padding: .7rem 0;
+
+}
+
+select {
+    width: 10rem;
+}
+.sort {
+    margin-left: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+

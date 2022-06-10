@@ -1,0 +1,18 @@
+.landing {
+    background-image: url('../../assets/bg-landing.jpg');
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.button button{
+    width: 100%;
+    font-size: 2rem;
+    padding: .5rem;
+    cursor: pointer;
+}

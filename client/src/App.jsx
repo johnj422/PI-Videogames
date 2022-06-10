@@ -10,9 +10,8 @@ function App() {
   return (
     <>
     
-      <Navbar />
       <Routes>
-        <Route path='/' element={<Landing/>} />
+        <Route exact path='/' element={<Landing/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/create' element={<Form/>} />
       </Routes>

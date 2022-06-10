@@ -1,18 +1,23 @@
+import { GET_ALL_VIDEOGAMES } from "./actions.js";
+
+
 const initialState = {
-    videogames: []
+    videogames: [],
+    favoritos: []
 }
 
 
 
-function reducer(state, action){
+export default function reducer(state = initialState, action){ 
     switch(action.type) {
-        case 'GET_ALL_GAMES':
+        case GET_ALL_VIDEOGAMES:
             return{
-                ...state
+                ...state,
+                videogames: action.payload
             }
-            default:
-                return state
+        default:
+            return state;
+
     }
 }
 
-export default reducer;
