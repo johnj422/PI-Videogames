@@ -10,18 +10,25 @@ export default function Home() {
   
   const videogames = useSelector(state => state.videogames);
   const VG_PER_PAGE = 15
-  const nextHandler = () => {console.log('nextHandler')}
-  const prevHandler = () => {console.log('prevHandler')}
   
   const [vgData, setVgData] = useState(videogames);
   const [items2, setItems] = useState([...videogames].splice(0, VG_PER_PAGE))
-
+  const [currentP, setCurrentPage] = useState(1)
+  const nextHandler = () => {
+    const totalShown = videogames.length
+    const nextPage = currentP+1
+    const firstIndex = currentP * VG_PER_PAGE 
+    if(firstIndex === totalShown) return
+    setItems([...videogames].splice(firstIndex, VG_PER_PAGE))
+    setCurrentPage(nextPage)
+  }
+  const prevHandler = () => {console.log('prevHandler')}
 
   return (
     <div>
       <Navbar />
       <Pagination 
-        currentPage={0}
+        currentPage={currentP}
         videogames={items2}
         prevHandler={prevHandler}
         nextHandler={nextHandler} 
