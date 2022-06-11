@@ -1,0 +1,38 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    
+    box-shadow: 0 0 4rem -1.5rem ;
+    margin-bottom: 6rem;
+}
+
+.pagination{
+    display: flex;
+    width: 18rem;
+    justify-content: space-around;
+    box-shadow: 0 0 4rem -1.5rem ;
+}
+li {
+    list-style: none;
+    box-shadow: 0 0 4rem -1.5rem ;
+}
+li button {
+    height: 3rem;
+    width: 2rem;
+    font-size: 1.3em;
+    background-color: rgba(137, 43, 226, 0);
+    transition: all .2s ease;
+    border: none;
+    box-shadow: 0 0 4rem -1.5rem ;
+
+}
+li button:hover {
+    background-color: rgba(0, 255, 255, 0);
+    scale: 120%;
+    
+}
+.activePage{
+    background-color: rgba(240, 248, 255, 0);
+    font-size: 2em;
+    box-shadow: 0 0 4rem -1.5rem ;    
+}

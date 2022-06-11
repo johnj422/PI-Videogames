@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './Pagination.css'
 
 
 export default function Pagination({
@@ -15,8 +15,8 @@ export default function Pagination({
     pageNumbers.push(i+1);
   }
   return (
-    <div>
-       <ul>
+    <div className='pagination-container'>
+       <ul className='pagination'>
           {pageNumbers?.map(n => 
             <li className='number' key={n}>
               <button

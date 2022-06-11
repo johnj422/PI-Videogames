@@ -3,4 +3,6 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 4rem;
+    padding-bottom: 0
+    ;
 }

@@ -29,14 +29,14 @@ export default function Home() {
   return (
     <div>
       <Navbar />
+      <Cards 
+        vgToShow={currentVG}
+      />
       <Pagination
         VGperPage={VGperPage}
         allVG={allVG.length}
         paginating={paginating}
         currentPage={currentPage}
-      />
-      <Cards 
-        vgToShow={currentVG}
       />
     </div>
   )
