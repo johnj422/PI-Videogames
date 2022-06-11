@@ -4,6 +4,7 @@ import Cards from "../Cards/Cards.jsx";
 import Pagination from "../Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideogames } from "../../redux/actions";
+import './Home.css'
 
 
 export default function Home() {
@@ -29,9 +30,12 @@ export default function Home() {
   return (
     <div>
       <Navbar />
-      <Cards 
-        vgToShow={currentVG}
-      />
+      <body>
+        <Cards 
+          vgToShow={currentVG}
+        />
+      </body>
+      
       <Pagination
         VGperPage={VGperPage}
         allVG={allVG.length}

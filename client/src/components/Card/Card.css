@@ -8,7 +8,7 @@
     overflow: hidden;
     border-radius: 1rem;
     transition: all .3s ease;
-    box-shadow: 0 0 1.5rem -1rem;
+    box-shadow: 0 .6rem 1.5rem -.5rem ;
 
 }
 .card:hover{

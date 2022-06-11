@@ -7,8 +7,11 @@ function Navbar (){
         <nav className='nav'>
             <div className='topNav'>
                 <div className='logo'>
+                    
                     <Link to='/home'>
-                        <h1 className='title'>Videogames APP</h1>
+                        {/* <h1 className='title'>Videogames APP</h1> */}
+                        <img src='https://i.postimg.cc/VLSDXTgR/Play.png' alt="LogoIMG" />
+                       
                     </Link>
                 </div>
                 <div>
@@ -18,8 +21,9 @@ function Navbar (){
                 <Link to='/create'>
                     <h1 className='title'>Create Videogame</h1>
                 </Link>
-
+        
             </div>
+            
            
             <div className='bottom-nav'>
                 <div >
