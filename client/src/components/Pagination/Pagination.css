@@ -1,9 +1,8 @@
 .pagination-container {
     display: flex;
     justify-content: center;
-    
     box-shadow: 0 0 4rem -1.5rem ;
-    margin-bottom: 6rem;
+    margin-bottom: 4rem;
 }
 
 .pagination{
