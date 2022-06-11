@@ -9,11 +9,12 @@ class Cards extends Component {
 
   componentDidMount() {
     this.props.getAllVideogames()
+    console.log(this.props.vgToShow)
   }
   render() {
     return (
       <div className='cards-container'>
-        {this.props.videogames.map(vg => 
+        {this.props.vgToShow.map(vg => 
           <Card 
             image={vg.background_image}
             name={vg.name}
