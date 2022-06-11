@@ -45,3 +45,12 @@ select {
     justify-content: space-evenly;
 }
 
+.create{
+    width: 16rem;
+    height: 4rem;
+
+}
+.create img{
+    width: 100%;
+}
+

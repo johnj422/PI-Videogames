@@ -18,9 +18,12 @@ function Navbar (){
                     <input type="text" placeholder='Search for a Videogame' />
                     <button>Search</button>
                 </div>
-                <Link to='/create'>
-                    <h1 className='title'>Create Videogame</h1>
-                </Link>
+                <div className='create'>
+                    <Link to='/create'>
+                        <img src="https://i.postimg.cc/GhGKtDq3/Play-2.png" alt="IMG Create" />
+                    </Link>
+                </div>
+               
         
             </div>
             
