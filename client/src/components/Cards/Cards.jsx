@@ -3,7 +3,8 @@ import Card from '../Card/Card'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getAllVideogames } from '../../redux/actions'
-import styles from './Cards.css'
+import './Cards.css'
+import {Link} from 'react-router-dom'
 
 class Cards extends Component {
 
@@ -15,11 +16,14 @@ class Cards extends Component {
     return (
       <div className='cards-container'>
         {this.props.vgToShow.map(vg => 
-          <Card 
-            image={vg.background_image}
-            name={vg.name}
-            genres={vg.genres}
-          />
+          <Link className='link' to={`/detail/${vg.id}`} 
+            style={{ textDecoration: 'none' }}>
+            <Card 
+              image={vg.background_image}
+              name={vg.name}
+              genres={vg.genres}
+            />
+          </Link>
         )}
       </div>
     )

@@ -1,8 +1,11 @@
-import './Form.css'
+import Navbar from '../Navbar/Navbar'
+
 
 function Form (){
     return (
-        <div className='create'>
+        <div>
+            <Navbar />
+         
             <h3>Create your OWN Videogames!</h3>
             <form action="" onSubmit={(e) => {e.preventDefault()}}>
                 <label htmlFor="">Name</label>

@@ -39,7 +39,7 @@ async function getAllVG (){
         }
         return gameDBToShow
     })
-    console.log(gamesDB)
+    
     return gamesAPI.concat(gamesDB)
 
 

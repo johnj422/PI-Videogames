@@ -1,9 +1,9 @@
-import { GET_ALL_VIDEOGAMES } from "./actions.js";
+import { GET_ALL_VIDEOGAMES, GET_VG_DETAILS } from "./actions.js";
 
 
 const initialState = {
     videogames: [],
-    
+    vgDetail: {}
 }
 
 
@@ -15,9 +15,15 @@ export default function reducer(state = initialState, action){
                 ...state,
                 videogames: action.payload
             }
-        default:
+        
+        
+        case GET_VG_DETAILS:
+            return{
+                ...state,
+                vgDetail: action.payload
+            }
+            default:
             return state;
-
     }
 }
 
