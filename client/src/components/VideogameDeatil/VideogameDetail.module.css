@@ -1,0 +1,71 @@
+.card {
+    color: white;
+    background-color: black;
+    padding-top: 3rem;
+}
+
+.detailContainer{
+
+    width: 20rem;
+    margin: 0 20rem;
+    margin-bottom: 4rem;
+    overflow: hidden;
+    border-radius: 1rem;
+    transition: all .3s ease;
+    box-shadow: 0 .2rem 2rem -.2rem rgb(217, 80, 255);
+
+}
+.imgContainer {
+    width: 20rem;
+    height: 15rem;
+
+}
+.imgContainer img {
+    width: 100%;
+
+}
+.detail-left {
+    object-fit:fill;
+    margin: auto 0;
+    border: 1px solid rgb(245, 5, 5);
+}
+.detail-left img {
+    width: 100%;
+    height: auto;
+    
+
+}
+.detail-right {
+    padding-left: 5rem;
+    z-index: 5;
+    width: 20rem;
+    
+}
+.info-bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.description {
+    border: 1px solid rgb(61, 5, 245);
+    width: 162%;
+    padding: 0 1rem;
+}
+.platforms {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.platforms p {
+    margin-right: 1rem;
+}
+
+.genres {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+.genres p {
+    margin-right: 1rem;
+}

@@ -3,7 +3,7 @@ import { GET_ALL_VIDEOGAMES, GET_VG_DETAILS } from "./actions.js";
 
 const initialState = {
     videogames: [],
-    vgDetail: {}
+    vgDetail: {},
 }
 
 
@@ -22,8 +22,8 @@ export default function reducer(state = initialState, action){
                 ...state,
                 vgDetail: action.payload
             }
-            default:
-            return state;
+        default:
+        return state;
     }
 }
 

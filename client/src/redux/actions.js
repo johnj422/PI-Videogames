@@ -14,12 +14,12 @@ export function getAllVideogames(){
 }
 export function getVgDetail(id){
     let url = `http://localhost:3001/videogames/${id}`
-    return function (dispatch) {
-        return fetch(url)
+    return async function (dispatch) {
+        return await fetch(url)
         .then(res => res.json())
         .then(json => {
         dispatch({type: GET_VG_DETAILS, payload: json})
         })
-        //.catch(error => console.warn(error))
+        .catch(error => console.warn(error))
     } 
 }
