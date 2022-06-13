@@ -27,7 +27,7 @@ export default function SearchBar({setCurrentPage}) {
         dispatch(searchVG(name));
         setName('')
         setCurrentPage(1)
-        dispatch(getAllVideogames())
+    
     }
 
   return (
