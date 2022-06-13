@@ -1,9 +1,10 @@
-import { GET_ALL_VIDEOGAMES, GET_VG_DETAILS } from "./actions.js";
+import { GET_ALL_VIDEOGAMES, GET_VG_DETAILS, SEARCH_VG } from "./actions.js";
 
 
 const initialState = {
     videogames: [],
     vgDetail: {},
+    searched: [],
 }
 
 
@@ -21,6 +22,11 @@ export default function reducer(state = initialState, action){
             return{
                 ...state,
                 vgDetail: action.payload
+            }
+        case SEARCH_VG:
+            return{
+                ...state,
+                videogames: action.payload
             }
         default:
         return state;

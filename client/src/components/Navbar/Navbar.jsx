@@ -1,22 +1,32 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom'
+import SearchBar from '../SearchBar/SearchBar';
+import { useDispatch } from 'react-redux';
+import { getAllVideogames } from '../../redux/actions';
 
-function Navbar (){
+
+function Navbar ({setCurrentPage}){
+    const dispatch = useDispatch()
+    function click (){
+        dispatch(getAllVideogames())
+        console.log('Click en Home')
+    }
     return (
         
         <nav className='nav'>
             <div className='topNav'>
                 <div className='logo'>
                     
-                    <Link to='/home'>
+                    <Link to='/home' onClick={(c) => click(c)}>
                         {/* <h1 className='title'>Videogames APP</h1> */}
                         <img src='https://i.postimg.cc/VLSDXTgR/Play.png' alt="LogoIMG" />
                        
                     </Link>
                 </div>
                 <div>
-                    <input type="text" placeholder='Search for a Videogame' />
-                    <button>Search</button>
+                   <SearchBar 
+                    setCurrentPage={setCurrentPage}
+                    />
                 </div>
                 <div className='create'>
                     <Link to='/create'>

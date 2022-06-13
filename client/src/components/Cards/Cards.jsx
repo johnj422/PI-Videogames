@@ -6,12 +6,13 @@ import { getAllVideogames } from '../../redux/actions'
 import './Cards.css'
 import {Link} from 'react-router-dom'
 
-class Cards extends Component {
+export default class Cards extends Component {
 
   componentDidMount() {
-    this.props.getAllVideogames()
-    console.log(this.props.vgToShow)
+    // this.props.getAllVideogames()
+    //console.log(this.props)
   }
+  
   render() {
     return (
       <div className='cards-container'>
@@ -30,9 +31,9 @@ class Cards extends Component {
   }
 }
 
-function mapStateToProps(state){
-  return {
-    videogames: state.videogames
-  }
-}
-export default connect(mapStateToProps, {getAllVideogames})(Cards)
+// function mapStateToProps(state){
+//   return {
+//     videogames: state.videogames
+//   }
+// }
+// export default connect(mapStateToProps, {getAllVideogames})(Cards)
