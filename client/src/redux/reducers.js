@@ -5,7 +5,8 @@ import {
     GET_GENRES, 
     FILTER_BY_GENRE, 
     FILTER_BY_DB_OR_API,
-    SORT_BY_RATING } from "./actions.js";
+    SORT_BY_RATING,
+    SORT_BY_NAME } from "./actions.js";
 
 
 const initialState = {
@@ -60,6 +61,12 @@ export default function reducer(state = initialState, action){
                 videogames: action.payload
             }
         case SORT_BY_RATING:
+            return{
+
+             ...state,
+            videogames: action.payload
+            }
+        case SORT_BY_NAME:
             return{
 
              ...state,

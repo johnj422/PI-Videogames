@@ -5,6 +5,8 @@ export const GET_GENRES = 'GET_GENRES'
 export const FILTER_BY_GENRE = 'FILTER_BY_GENRE'
 export const FILTER_BY_DB_OR_API = 'FILTER_BY_DB_OR_API'
 export const SORT_BY_RATING = 'SORT_BY_RATING'
+export const SORT_BY_NAME = 'SORT_BY_NAME'
+
 
 export function getAllVideogames(){
     let url = 'http://localhost:3001/videogames'
@@ -105,6 +107,38 @@ export function sortByRating(value){
             let vgSortedDec = json.sort((a,b) =>  (b.rating-a.rating))            
             //console.log(vgSortedDec)
             dispatch({type: SORT_BY_RATING, payload: vgSortedDec})
+        }
+        })
+        //.catch(error => console.warn(error))
+    } 
+}
+export function sortByName(value){
+    let url = 'http://localhost:3001/videogames'
+    return async function (dispatch) {
+        return await fetch(url)
+        .then(res => res.json())
+        .then(json => {
+        if (value === 'none') {
+            
+            dispatch({type: SORT_BY_NAME, payload:json})
+        }
+        if (value === 'ascending') {
+            let vgSortedAsc = json.sort((a,b) =>  
+            (a.name.toLowerCase() === b.name.toLowerCase() ? 0 
+            : a.name.toLowerCase() > b.name.toLowerCase() ? 1 
+            : -1))   
+              
+            //console.log(vgSortedAsc)
+            dispatch({type: SORT_BY_NAME, payload: vgSortedAsc})
+        
+        }
+        if (value === 'descending'){                
+            let vgSortedDec = json.sort((a,b) =>  
+            (b.name.toLowerCase() === a.name.toLowerCase() ? 0 
+            : b.name.toLowerCase() > a.name.toLowerCase() ? 1 
+            : -1))             
+            //console.log(vgSortedDec)
+            dispatch({type: SORT_BY_NAME, payload: vgSortedDec})
         }
         })
         //.catch(error => console.warn(error))

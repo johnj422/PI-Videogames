@@ -2,7 +2,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByDb, filterByGenre, getAllVideogames, getGenresDB, sortByRating } from '../../redux/actions';
+import { filterByDb, filterByGenre, getAllVideogames, getGenresDB, sortByRating, sortByName } from '../../redux/actions';
 import { useEffect } from 'react';
 
 
@@ -29,8 +29,13 @@ function Navbar ({setCurrentPage}){
         setCurrentPage(1);
     }
     function handleSortByRating (e){
-        console.log(e.target.value)
+        //console.log(e.target.value)
         dispatch(sortByRating(e.target.value))
+        setCurrentPage(1);
+    }
+    function handleSortByName (e){
+        console.log(e.target.value)
+        dispatch(sortByName(e.target.value))
         setCurrentPage(1);
     }
     var URLactual = window.location.href;
@@ -96,10 +101,14 @@ function Navbar ({setCurrentPage}){
                         <option value="ascending">Ascending</option>
                         <option value="descending">Descending</option>
                     </select>
-                    <select name="Alphabetical" id="4">
-                        <option value="alphabetical">Alphabetical Order</option>
-                        <option value="ascendent">A-Z</option>
-                        <option value="descendent">Z-A</option>
+                    <select
+                        name="Alphabetical" 
+                        id="4"
+                        onChange={(e) => handleSortByName(e)}
+                        >
+                        <option value="none">--None--</option>
+                        <option value="ascending">Ascending</option>
+                        <option value="descending">descending</option>
                     </select>
                 </div>
             </div>
