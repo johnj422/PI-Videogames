@@ -1,10 +1,11 @@
-import { GET_ALL_VIDEOGAMES, GET_VG_DETAILS, SEARCH_VG } from "./actions.js";
+import { GET_ALL_VIDEOGAMES, GET_VG_DETAILS, SEARCH_VG, GET_GENRES, FILTER_BY_GENRE } from "./actions.js";
 
 
 const initialState = {
     videogames: [],
     vgDetail: {},
     searched: [],
+    genres: [],
 }
 
 
@@ -28,6 +29,22 @@ export default function reducer(state = initialState, action){
                 ...state,
                 videogames: action.payload
             }
+        case GET_GENRES:
+            return{
+                ...state,
+                genres: action.payload
+            }
+        case FILTER_BY_GENRE:
+            if(action.payload.length === 0) {
+                alert ('No result found');
+                return state;
+            }
+            return{
+                ...state,
+                videogames: action.payload
+            }
+        
+
         default:
         return state;
     }

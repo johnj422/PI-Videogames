@@ -1,9 +1,10 @@
 .card {
-
+    height: 170vh;
     color: white;
     background-color: black;
     padding-top: 3rem;
 }
+
 
 .detailContainer{
 

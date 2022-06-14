@@ -1,16 +1,30 @@
 import './Navbar.css';
 import { Link } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar';
-import { useDispatch } from 'react-redux';
-import { getAllVideogames } from '../../redux/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { filterByGenre, getAllVideogames, getGenresDB } from '../../redux/actions';
+import { useEffect } from 'react';
 
 
 function Navbar ({setCurrentPage}){
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const vgGenres = useSelector((state) => state.genres);
+    //console.log(vgGenres.map(g => g.name))
+    useEffect(() => {
+        dispatch(getGenresDB())
+    }, [dispatch])
+
     function click (){
         dispatch(getAllVideogames())
-        console.log('Click en Home')
+        //console.log('Click en Home')
     }
+    function handleVgFilteredByGenre (e){
+        console.log(e.target.value)
+        dispatch(filterByGenre(e.target.value))
+        setCurrentPage(1);
+    }
+    var URLactual = window.location.href;
+    
     return (
         
         <nav className='nav'>
@@ -23,7 +37,7 @@ function Navbar ({setCurrentPage}){
                        
                     </Link>
                 </div>
-                <div>
+                <div className={URLactual.includes('detail')? 'displayNone' : 'search'}>
                    <SearchBar 
                     setCurrentPage={setCurrentPage}
                     />
@@ -38,13 +52,18 @@ function Navbar ({setCurrentPage}){
             </div>
             
            
-            <div className='bottom-nav'>
+            <div className= {URLactual.includes('detail')? 'displayNone' : 'bottom-nav'}>
                 <div >
-                    <select name="Genre" id="1">
-                        <option value="selection">Filter Gengre</option>
-                        <option value="action">Action</option>
-                        <option value="rpg">RPG</option>
-                        <option value="board">Board</option>
+                    <select 
+                        name="Genre" 
+                        id="1"
+                        onChange={(e) => handleVgFilteredByGenre(e)}
+                        >
+                        <option value='All'>--All--</option>
+                        {vgGenres?.map(g => 
+                        <option value={g.name}>{g.name}</option>
+                        )}
+                  
                     </select>
                     <select name="Videogames" id="2">
                         <option value="selection">Filter Videogames</option>
