@@ -68,30 +68,35 @@ function Navbar ({setCurrentPage}){
             
            
             <div className= {URLactual.includes('detail')? 'displayNone' : 'bottom-nav'}>
+                <div className='custom-select'>
                 <div >
                     <select 
                         name="Genre" 
                         id="1"
                         onChange={(e) => handleVgFilteredByGenre(e)}
                         >
-                        <option value='All'>--All--</option>
+                        <option disabled value='none'>GENRES</option>
+                        <option value='All'>All Genres</option>
                         {vgGenres?.map(g => 
                         <option value={g.name}>{g.name}</option>
                         )}
-                  
+                
                     </select>
+                </div>
+                <div>
                     <select 
                         name="Videogames" 
                         id="2"
                         onChange={(e) => handleVgFilteredByDBorApi(e)}
                         >
-                        <option value="All">--All--</option>
+                        <option disabled value='none'>VIDEOGAMES</option>
+                        <option value="All">All Databases</option>
                         <option value="existent">Existent</option>
                         <option value="created">Created</option>
                     </select>
                 </div>
             
-                <div className='sort'>
+                <div>
                     <select 
                         name="Rating" 
                         id="3"
@@ -101,6 +106,8 @@ function Navbar ({setCurrentPage}){
                         <option value="ascending">Ascending</option>
                         <option value="descending">Descending</option>
                     </select>
+                </div>
+                <div>
                     <select
                         name="Alphabetical" 
                         id="4"
@@ -112,7 +119,7 @@ function Navbar ({setCurrentPage}){
                     </select>
                 </div>
             </div>
-            
+            </div>
            
         </nav>
     )

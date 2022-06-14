@@ -32,26 +32,45 @@ input {
     display: none;
 
 }
+
+
 .bottom-nav {
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
     background-color: rgb(68, 68, 68);
-    padding: .7rem 0;
+    padding: 10px 0rem;
     width: 100%;
     box-shadow: 0rem 10px 20px -1px;
     
 }
-
+.bottom-nav p{
+    margin: 0;
+    margin-bottom: .3rem;
+    color: aliceblue;
+    font-size: .8rem;
+}
+.bottom-nav div {
+    margin: 0 1rem;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.custom-select {
+    display: flex;
+  
+}
 
 select {
-    width: 10rem;
+    width: 8rem;
+    background-color: rgba(68, 68, 68, 0.799);
+    border:1px rgb(143, 143, 143) solid;
+    border-radius: 10px;
+    color: rgb(216, 216, 216);
 }
-.sort {
-    margin-left: 2rem;
-    display: flex;
-    justify-content: space-evenly;
-}
+
 
 .create{
     width: 16rem;
