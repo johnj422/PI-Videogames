@@ -1,4 +1,10 @@
-import { GET_ALL_VIDEOGAMES, GET_VG_DETAILS, SEARCH_VG, GET_GENRES, FILTER_BY_GENRE } from "./actions.js";
+import { 
+    GET_ALL_VIDEOGAMES, 
+    GET_VG_DETAILS, 
+    SEARCH_VG, 
+    GET_GENRES, 
+    FILTER_BY_GENRE, 
+    FILTER_BY_DB_OR_API } from "./actions.js";
 
 
 const initialState = {
@@ -36,6 +42,15 @@ export default function reducer(state = initialState, action){
             }
         case FILTER_BY_GENRE:
             if(action.payload.length === 0) {
+                alert ('No result found');
+                return state;
+            }
+            return{
+                ...state,
+                videogames: action.payload
+            }
+        case FILTER_BY_DB_OR_API:
+            if (action.payload.length === 0){
                 alert ('No result found');
                 return state;
             }

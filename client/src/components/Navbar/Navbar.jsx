@@ -2,7 +2,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByGenre, getAllVideogames, getGenresDB } from '../../redux/actions';
+import { filterByDb, filterByGenre, getAllVideogames, getGenresDB } from '../../redux/actions';
 import { useEffect } from 'react';
 
 
@@ -19,8 +19,13 @@ function Navbar ({setCurrentPage}){
         //console.log('Click en Home')
     }
     function handleVgFilteredByGenre (e){
-        console.log(e.target.value)
+        //console.log(e.target.value)
         dispatch(filterByGenre(e.target.value))
+        setCurrentPage(1);
+    }
+    function handleVgFilteredByDBorApi (e){
+        //console.log(e.target.value)
+        dispatch(filterByDb(e.target.value))
         setCurrentPage(1);
     }
     var URLactual = window.location.href;
@@ -65,8 +70,12 @@ function Navbar ({setCurrentPage}){
                         )}
                   
                     </select>
-                    <select name="Videogames" id="2">
-                        <option value="selection">Filter Videogames</option>
+                    <select 
+                        name="Videogames" 
+                        id="2"
+                        onChange={(e) => handleVgFilteredByDBorApi(e)}
+                        >
+                        <option value="All">--All--</option>
                         <option value="existent">Existent</option>
                         <option value="created">Created</option>
                     </select>

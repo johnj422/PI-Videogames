@@ -12,7 +12,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const allVG = useSelector((state) => state.videogames);
   const searchedVG = useSelector((state) => state.searched);
-  console.log(searchedVG)
+  //console.log(searchedVG)
 
   const [currentPage, setCurrentPage] = useState(1);
   const [VGperPage, setVGperPage] = useState(15);
