@@ -46,7 +46,7 @@ export default function VideogameDetail() {
                   <div className='platforms'>
                     
                     {detail.platforms?.map(g =>
-                      <p> - {g.platform.name}</p>
+                      <p> - {g}</p>
                       )}
                   </div>
                   <h4>Genres:</h4>

@@ -4,6 +4,7 @@ export const SEARCH_VG = 'SEARCH_VG'
 export const GET_GENRES = 'GET_GENRES' 
 export const FILTER_BY_GENRE = 'FILTER_BY_GENRE'
 export const FILTER_BY_DB_OR_API = 'FILTER_BY_DB_OR_API'
+export const SORT_BY_RATING = 'SORT_BY_RATING'
 
 export function getAllVideogames(){
     let url = 'http://localhost:3001/videogames'
@@ -83,5 +84,29 @@ export function filterByDb(value){
         }
         })
         .catch(error => console.warn(error))
+    } 
+}
+export function sortByRating(value){
+    let url = 'http://localhost:3001/videogames'
+    return async function (dispatch) {
+        return await fetch(url)
+        .then(res => res.json())
+        .then(json => {
+        if (value === 'none') {
+            dispatch({type: SORT_BY_RATING, payload:json})
+        }
+        if (value === 'ascending') {
+            let vgSortedAsc = json.sort((a,b) =>  (a.rating-b.rating))            
+            //console.log(vgSortedAsc)
+            dispatch({type: SORT_BY_RATING, payload: vgSortedAsc})
+        
+        }
+        if (value === 'descending'){                
+            let vgSortedDec = json.sort((a,b) =>  (b.rating-a.rating))            
+            //console.log(vgSortedDec)
+            dispatch({type: SORT_BY_RATING, payload: vgSortedDec})
+        }
+        })
+        //.catch(error => console.warn(error))
     } 
 }

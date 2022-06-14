@@ -2,7 +2,7 @@ import './Navbar.css';
 import { Link } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterByDb, filterByGenre, getAllVideogames, getGenresDB } from '../../redux/actions';
+import { filterByDb, filterByGenre, getAllVideogames, getGenresDB, sortByRating } from '../../redux/actions';
 import { useEffect } from 'react';
 
 
@@ -26,6 +26,11 @@ function Navbar ({setCurrentPage}){
     function handleVgFilteredByDBorApi (e){
         //console.log(e.target.value)
         dispatch(filterByDb(e.target.value))
+        setCurrentPage(1);
+    }
+    function handleSortByRating (e){
+        console.log(e.target.value)
+        dispatch(sortByRating(e.target.value))
         setCurrentPage(1);
     }
     var URLactual = window.location.href;
@@ -82,10 +87,14 @@ function Navbar ({setCurrentPage}){
                 </div>
             
                 <div className='sort'>
-                    <select name="Rating" id="3">
-                        <option value="selection">Rating Order</option>
-                        <option value="greater">Greater Rating</option>
-                        <option value="lower">Lower Rating</option>
+                    <select 
+                        name="Rating" 
+                        id="3"
+                        onChange={(e) => handleSortByRating(e)}
+                        >
+                        <option value="none">--None--</option>
+                        <option value="ascending">Ascending</option>
+                        <option value="descending">Descending</option>
                     </select>
                     <select name="Alphabetical" id="4">
                         <option value="alphabetical">Alphabetical Order</option>
