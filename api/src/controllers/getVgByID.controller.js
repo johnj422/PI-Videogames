@@ -28,7 +28,7 @@ const findVideogameByID = async (id) => {
             description: gameByID.data.description,
             released: gameByID.data.released,
             rating: gameByID.data.rating,
-            platforms: gameByID.data.platforms,
+            platforms: gameByID.data.platforms.map(p => p.platform.name),
             background_image: gameByID.data.background_image,
             genres: gameByID.data.genres,
         

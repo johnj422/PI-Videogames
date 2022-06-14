@@ -20,8 +20,8 @@ async function getAllVG (){
 
     let gamesAPI = []
     for (const game of gamesProcesed) {
-        let { id, name, genres, background_image } = game;
-        gamesAPI.push({ id, name, genres, background_image })
+        let { id, name, genres, background_image, rating } = game;
+        gamesAPI.push({ id, name, genres, background_image, rating })
         }
         
         //return gamesAPI;
@@ -30,12 +30,13 @@ async function getAllVG (){
 
 
     gamesDB = gamesDB.map(game => {
-        console.log(game.dataValues)
+        //console.log(game.dataValues)
         let gameDBToShow = {
             id: game.dataValues.id,
             name: game.dataValues.name,
             background_image: game.dataValues.background_image,
-            genres: game.dataValues.genres
+            genres: game.dataValues.genres,
+            rating: game.dataValues.rating
         }
         return gameDBToShow
     })
