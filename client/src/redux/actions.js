@@ -6,6 +6,7 @@ export const FILTER_BY_GENRE = 'FILTER_BY_GENRE'
 export const FILTER_BY_DB_OR_API = 'FILTER_BY_DB_OR_API'
 export const SORT_BY_RATING = 'SORT_BY_RATING'
 export const SORT_BY_NAME = 'SORT_BY_NAME'
+export const CREATE_VG = 'CREATE_VG'
 
 
 export function getAllVideogames(){
@@ -143,4 +144,22 @@ export function sortByName(value){
         })
         //.catch(error => console.warn(error))
     } 
+}
+export function createVG (obj) {
+    let url = 'http://localhost:3001/videogames'
+    const options = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(obj)
+    }
+    return async function(dispatch) {
+        return await fetch (url, options)
+        .then(res => res.json())
+        .then(json => (
+            dispatch({type: CREATE_VG, payload: json})
+        .then(alert(json))
+            
+    ))
+    .catch(error => console.warn(error))
+    }
 }

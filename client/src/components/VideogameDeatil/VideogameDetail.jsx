@@ -36,7 +36,7 @@ export default function VideogameDetail() {
             </div>
           </div>
             <div className={s.detailRight}>
-              <img src='https://i.postimg.cc/nhdnsZZm/Play-4.png' alt="title-Img" />
+              <img src='https://i.postimg.cc/Jzt1ZVmF/Play-7.png' alt="title-Img" />
               <h1>{detail.name}</h1>
               <h2>Rating: {detail.rating}</h2>
               <div className='info'>

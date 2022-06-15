@@ -34,7 +34,7 @@ function Navbar ({setCurrentPage}){
         setCurrentPage(1);
     }
     function handleSortByName (e){
-        console.log(e.target.value)
+        //console.log(e.target.value)
         dispatch(sortByName(e.target.value))
         setCurrentPage(1);
     }
@@ -47,7 +47,7 @@ function Navbar ({setCurrentPage}){
                 <div className='logo'>  
                     <Link to='/home' onClick={(c) => click(c)}>
                         {/* <h1 className='title'>Videogames APP</h1> */}
-                        <img src='https://i.postimg.cc/VLSDXTgR/Play.png' alt="LogoIMG" />  
+                        <img src='https://i.postimg.cc/httscMgg/Play-6.png' alt="LogoIMG" />  
                     </Link>
                 </div>
                 <div className={URLactual.includes('detail')|| URLactual.includes('create')? 'displayNone' : 'search'}>

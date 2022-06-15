@@ -6,7 +6,8 @@ import {
     FILTER_BY_GENRE, 
     FILTER_BY_DB_OR_API,
     SORT_BY_RATING,
-    SORT_BY_NAME } from "./actions.js";
+    SORT_BY_NAME,
+    CREATE_VG } from "./actions.js";
 
 
 const initialState = {
@@ -14,6 +15,7 @@ const initialState = {
     vgDetail: {},
     searched: [],
     genres: [],
+    newVG: {},
 }
 
 
@@ -71,6 +73,12 @@ export default function reducer(state = initialState, action){
 
              ...state,
             videogames: action.payload
+            }
+        case CREATE_VG:
+            return{
+                
+                ...state,
+                newVG: action.payload
             }
 
         default:
