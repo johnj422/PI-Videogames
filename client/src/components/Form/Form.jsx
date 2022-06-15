@@ -17,47 +17,35 @@ export default function Form() {
 		'Android',
 		'Nintendo 3DS',
 		'Nintendo DS',
-		'Nintendo DSi',
 		'macOS',
 		'Linux',
 		'Xbox 360',
-		'Xbox',
 		'PlayStation 3',
 		'PlayStation 2',
-		'PlayStation',
 		'PS Vita',
 		'PSP',
 		'Wii U',
 		'Wii',
 		'GameCube',
 		'Nintendo 64',
-		'Game Boy Advance',
-		'Game Boy Color',
-		'Game Boy',
 		'SNES',
 		'NES',
-		'Classic Macintosh',
-		'Apple II',
-		'Commodore / Amiga',
 		'Atari 7800',
 		'Atari 5200',
 		'Atari 2600',
-		'Atari Flashback',
-		'Atari 8-bit',
-		'Atari ST',
-		'Atari Lynx',
-		'Atari XEGS',
 		'Genesis',
 		'SEGA Saturn',
 		'SEGA CD',
 		'SEGA 32X',
-		'SEGA Master System',
 		'Dreamcast',
 		'3DO',
 		'Jaguar',
 		'Game Gear',
 		'Neo Geo',
+        'Xbox',
 	];
+    const sortedPlatforms = platforms.sort((a,b) => a.toLowerCase() > b.toLowerCase())
+    console.log(sortedPlatforms)
 
   return (
     <div className='general-container'>
@@ -82,13 +70,13 @@ export default function Form() {
                     <fieldset className='platforms-field' htmlFor='platforms'>
                         <legend>Platforms</legend> 
                     <div className='check-list platform-field'>
-                        {platforms?.map(p => 
+                        {sortedPlatforms?.map(p => 
                             <p><input type='checkbox' value={p}></input>{p}</p>)}
                     </div>
                     </fieldset>
 
                     <label htmlFor='background_image'>Image</label>
-                    <input type="text" name='Image' placeholder="https://yourimageurl.com"/>
+                    <input type="text" name='Image' placeholder="https://yourimageurl.com/image.jpeg or png"/>
                     <button>Create Videogame</button>
 
                 
