@@ -60,11 +60,13 @@ input {
 }
 
 .bottom-nav select {
-    width: 8rem;
+    width: 10rem;
     background-color: rgba(68, 68, 68, 0.799);
     border:1px rgb(143, 143, 143) solid;
     border-radius: 10px;
     color: rgb(216, 216, 216);
+    align-items: center;
+    text-align: center;
 }
 
 

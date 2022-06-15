@@ -94,7 +94,8 @@ function Navbar ({setCurrentPage}){
                         id="3"
                         onChange={(e) => handleSortByRating(e)}
                         >
-                        <option value="none">--None--</option>
+                        <option disabled value='none'>Rating Sort</option>
+                        <option value="none">Unsorted Rating</option>
                         <option value="ascending">Ascending</option>
                         <option value="descending">Descending</option>
                     </select>
@@ -105,9 +106,10 @@ function Navbar ({setCurrentPage}){
                         id="4"
                         onChange={(e) => handleSortByName(e)}
                         >
-                        <option value="none">--None--</option>
+                        <option disabled value='none'>Name Sort</option>
+                        <option value="none">Unsorted Name</option>
                         <option value="ascending">Ascending</option>
-                        <option value="descending">descending</option>
+                        <option value="descending">Descending</option>
                     </select>
                 </div>
             </div>
