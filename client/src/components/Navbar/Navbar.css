@@ -53,17 +53,13 @@ input {
 .bottom-nav div {
     margin: 0 1rem;
 }
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+
 .custom-select {
     display: flex;
   
 }
 
-select {
+.bottom-nav select {
     width: 8rem;
     background-color: rgba(68, 68, 68, 0.799);
     border:1px rgb(143, 143, 143) solid;

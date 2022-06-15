@@ -44,15 +44,13 @@ function Navbar ({setCurrentPage}){
         
         <nav className='nav'>
             <div className='topNav'>
-                <div className='logo'>
-                    
+                <div className='logo'>  
                     <Link to='/home' onClick={(c) => click(c)}>
                         {/* <h1 className='title'>Videogames APP</h1> */}
-                        <img src='https://i.postimg.cc/VLSDXTgR/Play.png' alt="LogoIMG" />
-                       
+                        <img src='https://i.postimg.cc/VLSDXTgR/Play.png' alt="LogoIMG" />  
                     </Link>
                 </div>
-                <div className={URLactual.includes('detail')? 'displayNone' : 'search'}>
+                <div className={URLactual.includes('detail')|| URLactual.includes('create')? 'displayNone' : 'search'}>
                    <SearchBar 
                     setCurrentPage={setCurrentPage}
                     />
@@ -62,12 +60,8 @@ function Navbar ({setCurrentPage}){
                         <img src="https://i.postimg.cc/GhGKtDq3/Play-2.png" alt="IMG Create" />
                     </Link>
                 </div>
-               
-        
             </div>
-            
-           
-            <div className= {URLactual.includes('detail')? 'displayNone' : 'bottom-nav'}>
+            <div className= {URLactual.includes('detail') || URLactual.includes('create')? 'displayNone' : 'bottom-nav'}>
                 <div className='custom-select'>
                 <div >
                     <select 
@@ -80,7 +74,6 @@ function Navbar ({setCurrentPage}){
                         {vgGenres?.map(g => 
                         <option value={g.name}>{g.name}</option>
                         )}
-                
                     </select>
                 </div>
                 <div>
@@ -95,7 +88,6 @@ function Navbar ({setCurrentPage}){
                         <option value="created">Created</option>
                     </select>
                 </div>
-            
                 <div>
                     <select 
                         name="Rating" 
@@ -120,7 +112,6 @@ function Navbar ({setCurrentPage}){
                 </div>
             </div>
             </div>
-           
         </nav>
     )
 }

@@ -10,14 +10,12 @@ import Form from './components/Form/Form';
 function App() {
   return (
     <>
-    
       <Routes>
         <Route exact path='/' element={<Landing/>} />
         <Route path='/home' element={<Home/>} />
         <Route path='/create' element={<Form/>} />
         <Route path='/detail/:id' element={<VideogameDetail/>} />
       </Routes>
-   
     </>
   );
 }
