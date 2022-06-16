@@ -137,14 +137,29 @@ export default function Form() {
            
     //     } 
     const handleInputAdd = function (e) {
-        setInput({...input, [e.target.name]: e.target.checked ? 
-            [...input.genres, e.target.value] : input.genres.filter(g => g !== e.target.value)});
-            setErrors(validate({...input, [e.target.name]: e.target.value}))
+        setInput({
+            ...input, 
+            [e.target.name]: e.target.checked ? 
+            [...input.genres, e.target.value] : 
+            input.genres.filter(g => g !== e.target.value)
+        });
+
+        setErrors(validate({
+            ...input, 
+            [e.target.name]: e.target.value
+        }))
         } 
     const handleInputAddPlat = function (e) {
-        setInput({...input, [e.target.name]: !input.platforms.includes(e.target.value) ? 
-            [...input.platforms, e.target.value] : input.platforms.filter(p => p !== e.target.value)});
-            setErrors(validate({...input, [e.target.name]: e.target.value}))
+        setInput({
+            ...input, 
+            [e.target.name]: e.target.checked ? 
+            [...input.platforms, e.target.value] : 
+            input.platforms.filter(p => p !== e.target.value)});
+
+        setErrors(validate({
+            ...input, 
+            [e.target.name]: e.target.value
+        }))
             
         } 
     const handleSubmit = function (e){
