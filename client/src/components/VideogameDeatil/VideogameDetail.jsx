@@ -29,15 +29,51 @@ export default function VideogameDetail() {
 
     <div>
       <Navbar />
-        <div className={s.wraper}>
-          <div className={s.card}>
+        <div className={s.container}>
+          <div className={s.title}>
+            <img className={s.titleImg} src='https://i.postimg.cc/Jzt1ZVmF/Play-7.png' alt="title-Img" />
+          </div>
+          <div className={s.image}>
+               <img src={detail.background_image} alt="VG Image" />
+          </div>
+          <div class={s.info}>
+            <div class={s.gameTitle}>
+              <h1>{detail.name}</h1>
+            </div>
+            <div class={s.rating}>
+              <h2>Rating: {detail.rating}</h2>
+            </div>
+            <div class={s.released}>
+              <h3>Release Date: {detail.released}</h3>
+            </div>
+            <div class={s.platforms}>
+              <h4>Platforms:</h4> 
+                <div className={s.platformsList}>   
+                  {detail.platforms?.map(g =>
+                    <p> - {g}</p>
+                    )}
+                </div>
+            </div>
+            <div class={s.genres}>
+              <h4>Genres:</h4>
+                <div className={s.genresList}>
+                  {detail.genres?.map(g =>
+                  <p> - {g.name}</p>
+                  )}
+                </div>
+            </div>
+          </div>
+          <div class={s.description}>
+            
+          </div>
+          {/* <div className={s.card}>
             <div className={s.detailContainer}>
               <div className={s.imgContainer}>
-                <img src={detail.background_image} alt="VG Image" />
+               
               </div>
             </div>
               <div className={s.detailRight}>
-                <img src='https://i.postimg.cc/Jzt1ZVmF/Play-7.png' alt="title-Img" />
+                
                 <h1>{detail.name}</h1>
                 <h2>Rating: {detail.rating}</h2>
                 <div className='info'>
@@ -69,7 +105,7 @@ export default function VideogameDetail() {
                   Game description: {detail.description}
                 </p>
               </div>
-          </div>
+          </div> */}
         </div>
     </div>
         

@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import s from './Form.module.css';
-import Navbar from '../Navbar/Navbar'
-import { useState } from 'react';
 import { createVG } from '../../redux/actions';
+import Navbar from '../Navbar/Navbar'
+import s from './Form.module.css';
+
 
 export function validate (input){
     
@@ -11,10 +11,8 @@ export function validate (input){
         name: /^[\w -]+$/,
         description: /^[a-zA-ZÀ-ÿ0-9\s]{2,50}$/, //Solo letras y números
         rating: /^([0-4]{1}(\.\d{1,2})?|5(.0{1,2})?)$/,
-        background_image: /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\∑.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/
+        background_image: /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i,
     } 
-    
-
     let errors = {};
     
     if(!input.name) {
@@ -32,14 +30,13 @@ export function validate (input){
     }else if(!regex.rating.test(input.rating)){
         errors.rating = 'Rating Values between 1.0-5.0'
     }
-    if(input.genres.length >3 ) {
-        errors.genres = 'Max 3'
-    }else if(input.genres.length === 0){
+    if(!input.released) {
+        errors.released = 'Date is required'
+    }
+    if(input.genres.length === 0){
         errors.genres = 'At least 1 Genre is required'
     }
-    if(input.platforms.length >3 ) {
-        errors.platforms = 'Max 3'
-    }else if(input.platforms.length === 0){
+    if(input.platforms.length === 0){
         errors.platforms = 'At least 1 Platform is required'
     }
     if(!input.background_image) {
@@ -47,13 +44,10 @@ export function validate (input){
     }else if(!regex.background_image.test(input.background_image)){
         errors.background_image = 'Please use a valid URL'
     }
-    
-    //console.log(errors)
     return errors;
 }
 export default function Form() {
     let genres = useSelector((state) => state.genres);
-
 
     const dispatch = useDispatch()
     const platforms = [
@@ -94,6 +88,7 @@ export default function Form() {
 		'Neo Geo',
         'Xbox',
 	];
+    const [ button, setButton ] = useState(true)
 
     const sortedPlatforms = platforms.sort((a,b) => a.toLowerCase() > b.toLowerCase())
     //console.log(sortedPlatforms)
@@ -102,26 +97,55 @@ export default function Form() {
         name: '',
         description: '',
         released: '',
-        rating: 1,
+        rating: null,
         genres: [],
         platforms: [],
-        background_image: '',
+        background_image: ''
     });
     //console.log(input)
+    useEffect(() => {
+      if (
+        errors.name || 
+        errors.description ||
+        errors.released ||
+        errors.rating ||
+        errors.genres||
+        errors.platforms ||
+        errors.background_image
+        ) {
+            setButton(true)
+        }else(
+            setButton(false)
+        )
+            
+    },)
     
     const handleInputChange = function (e) {
         //console.log(e.target.value)
-        setInput({...input, [e.target.name]: e.target.value});
-        setErrors(validate({...input, [e.target.name]: e.target.value}))
+        setInput({
+            ...input, 
+            [e.target.name]: e.target.value
+        });
+        setErrors(validate({
+            ...input, 
+            [e.target.name]: e.target.value
+        }))
     } 
+    // const handleInputAdd = function (e) {
+    //     setInput({...input, [e.target.name]: !input.genres.includes(e.target.value) ? 
+    //         [...input.genres, e.target.value] : input.genres.filter(g => g !== e.target.value)});
+           
+    //     } 
     const handleInputAdd = function (e) {
-        setInput({...input, [e.target.name]: !input.genres.includes(e.target.value) ? 
+        setInput({...input, [e.target.name]: e.target.checked ? 
             [...input.genres, e.target.value] : input.genres.filter(g => g !== e.target.value)});
+            setErrors(validate({...input, [e.target.name]: e.target.value}))
         } 
     const handleInputAddPlat = function (e) {
         setInput({...input, [e.target.name]: !input.platforms.includes(e.target.value) ? 
             [...input.platforms, e.target.value] : input.platforms.filter(p => p !== e.target.value)});
-        
+            setErrors(validate({...input, [e.target.name]: e.target.value}))
+            
         } 
     const handleSubmit = function (e){
         e.preventDefault()
@@ -156,13 +180,14 @@ export default function Form() {
                         {errors.description && <label className={s.errors_label}>{errors.description}</label>} 
                     <label htmlFor='released'>Released</label>
                     <input 
+                        className={errors.released && s.errors}
                         type="date" 
                         name='released' 
                         min='2000-01-01'
                         max='2022-12-31'
                         value={input.released}
                         onChange={handleInputChange}/>
-                        {errors.date && (<p>{errors.date}</p>)}
+                        {errors.released && (<p>{errors.released}</p>)}
                     <label htmlFor='rating'>Rating</label>
                     <input 
                         className={errors.rating && s.errors}
@@ -194,12 +219,12 @@ export default function Form() {
                     </fieldset>
                     <fieldset className={s.platformsField} htmlFor='platforms'>
                         <legend
-                            className={errors.genres && s.errors}
+                            className={errors.platforms && s.errors}
                         >Platforms</legend> 
                     <div className={s.checkListPlatform}>
                         {sortedPlatforms?.map(p => 
                             <p><input 
-                                className={errors.genres && s.errors}
+                                className={errors.platforms && s.errors}
                                 type='checkbox' 
                                 name='platforms'
                                 value={p}
@@ -212,14 +237,18 @@ export default function Form() {
 
                     <label htmlFor='background_image'>Image</label>
                     <input 
-                        className={errors.genres && s.errors}
+                        className={errors.background_image && s.errors}
                         type="text" 
                         name='background_image' 
                         value={input.background_image}
                         onChange={handleInputChange}
                         placeholder="https://yourimageurl.com/image.jpeg or png"/>
                         {errors.background_image && <label className={s.errors_label}>{errors.background_image}</label>}
-                    <button type='submit'>Create Videogame</button>
+                    <button 
+                        type='submit'
+                        className={ button ? s.submitDis : s.submit} 
+                        
+                        >Create Videogame</button>
                 </form>
             </div>
         

@@ -1,73 +1,70 @@
-.card {
-    height: 170vh;
-    color: white;
-    background-color: black;
-    padding-top: 3rem;
-}
-
-
-.detailContainer{
-
-    width: 20rem;
-    margin: 0 5rem;
-    margin-bottom: 4rem;
-    overflow: hidden;
-    border-radius: 1rem;
-    transition: all .3s ease;
-    box-shadow: 0 .2rem 2rem -.2rem rgb(224, 121, 253);
-
-}
-.imgContainer {
-    width: 20rem;
-    height: 15rem;
-
-}
-.imgContainer img {
+.container {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.3fr 1.7fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "title title title title"
+      "image image info info"
+      "description description description description";
+      background-color: black;
+  }
+  
+  .title {
+    justify-self: center;
+    align-self: center;
+    grid-area: title;
+    width: 40rem;
+  }
+  .title img{
+  
     width: 100%;
-
+  }
+  
+  .image { 
+    justify-self: center;
+    grid-area: image; 
+    width: 40rem;
+    height: 30rem;
+  
 }
-.detail-left {
-    object-fit:fill;
-    margin: auto 0;
-    border: 1px solid rgb(245, 5, 5);
-}
-.detail-left img {
+.image img {
     width: 100%;
     height: auto;
-    
-
+    border-radius: 2rem;
 }
-.detail-right {
-    padding-left: 5rem;
-    z-index: 5;
-    width: 20rem;
-    
-}
-.info-bottom {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-.description {
-    border: 1px solid rgb(61, 5, 245);
-    width: 162%;
-    padding: 0 1rem;
-}
-.platforms {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-.platforms p {
-    margin-right: 1rem;
-}
-
-.genres {
+  
+  .info {  display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "gameTitle gameTitle gameTitle"
+      "rating rating rating"
+      "released released released"
+      "platforms platforms platforms"
+      "genres genres genres";
+    grid-area: info;
+    color: white;
+  }
+  
+  .gameTitle { grid-area: gameTitle; }
+  
+  .rating { grid-area: rating; }
+  
+  .released { grid-area: released; }
+  
+  .platforms { grid-area: platforms; }
+  .platformsList{
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+  }
+  
+  .genres { grid-area: genres; }
+  
+  .description { 
+    grid-area: description; 
+    color: rgb(201, 201, 201);
 }
-.genres p {
-    margin-right: 1rem;
-}
+  
