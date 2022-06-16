@@ -12,6 +12,7 @@ async function createVg (obj){
     await axios.get('http://localhost:3001/genres');
 
     let {name, description, released, rating, genres, platforms, background_image} = obj;
+    
     if(!name || !description || !released || !rating || !genres || !platforms || !background_image) throw 'Missing Information';
 
     let genresDB = genres.map(async g => {
@@ -25,7 +26,7 @@ async function createVg (obj){
     genresDB = await Promise.all(genresDB);
     genresDB = await genresDB.flat();
     genresDB = genresDB.map(genre => genre.id);
-
+    
     let newVG = await Videogame.create(obj);
     newVG.addGenre(genresDB);
 

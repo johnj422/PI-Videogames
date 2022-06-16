@@ -14,7 +14,7 @@ router.get('/videogames', async (req, res) => {
         res.json(await getAllVG())
         }
     } catch (e) {
-        res.send(e)
+        res.send({error: e})
     }
 })
 

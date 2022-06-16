@@ -35,6 +35,10 @@ export default function reducer(state = initialState, action){
                 vgDetail: action.payload
             }
         case SEARCH_VG:
+            if(action.payload.error){
+                alert(action.payload.error)
+                return state;
+            }
             return{
                 ...state,
                 videogames: action.payload
@@ -46,7 +50,7 @@ export default function reducer(state = initialState, action){
             }
         case FILTER_BY_GENRE:
             if(action.payload.length === 0) {
-                alert ('No result found');
+                alert ('No results found');
                 return state;
             }
             return{

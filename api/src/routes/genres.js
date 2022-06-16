@@ -8,7 +8,7 @@ router.get('/genres', async (req, res) => {
         let response = await importGenre()
         res.json(response)
     } catch (e) {
-        res.send(e)
+        res.send({error: e})
     }
 })
 

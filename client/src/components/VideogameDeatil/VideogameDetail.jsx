@@ -28,48 +28,50 @@ export default function VideogameDetail() {
   return (
 
     <div>
-        <Navbar />
-        <div className={s.card}>
-          <div className={s.detailContainer}>
-            <div className={s.imgContainer}>
-              <img src={detail.background_image} alt="VG Image" />
+      <Navbar />
+        <div className={s.wraper}>
+          <div className={s.card}>
+            <div className={s.detailContainer}>
+              <div className={s.imgContainer}>
+                <img src={detail.background_image} alt="VG Image" />
+              </div>
             </div>
-          </div>
-            <div className={s.detailRight}>
-              <img src='https://i.postimg.cc/Jzt1ZVmF/Play-7.png' alt="title-Img" />
-              <h1>{detail.name}</h1>
-              <h2>Rating: {detail.rating}</h2>
-              <div className='info'>
-               
-                <h3>Release Date: {detail.released}</h3>
-                <h4>Platforms:</h4>
-                <div className='info-bottom'>
-                  <div className='platforms'>
-                    
-                    {detail.platforms?.map(g =>
-                      <p> - {g}</p>
+              <div className={s.detailRight}>
+                <img src='https://i.postimg.cc/Jzt1ZVmF/Play-7.png' alt="title-Img" />
+                <h1>{detail.name}</h1>
+                <h2>Rating: {detail.rating}</h2>
+                <div className='info'>
+                
+                  <h3>Release Date: {detail.released}</h3>
+                  <h4>Platforms:</h4>
+                  <div className='info-bottom'>
+                    <div className='platforms'>
+                      
+                      {detail.platforms?.map(g =>
+                        <p> - {g}</p>
+                        )}
+                    </div>
+                    <h4>Genres:</h4>
+                    <div className='genres'>
+                      
+                    {detail.genres?.map(g =>
+                      <p> - {g.name}</p>
                       )}
+                    </div>
                   </div>
-                  <h4>Genres:</h4>
-                  <div className='genres'>
-                    
-                  {detail.genres?.map(g =>
-                    <p> - {g.name}</p>
-                    )}
-                  </div>
+
                 </div>
+                
 
               </div>
-              
-
-            </div>
-            <div className='description'>
-              <p>
-                Game description: {detail.description}
-              </p>
-            </div>
+              <div className='description'>
+                <p>
+                  Game description: {detail.description}
+                </p>
+              </div>
           </div>
-      </div>
+        </div>
+    </div>
         
     
   )
