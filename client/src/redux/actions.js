@@ -9,15 +9,19 @@ export const SORT_BY_NAME = 'SORT_BY_NAME'
 export const CREATE_VG = 'CREATE_VG'
 export const RESET_DETAIL = 'RESET_DETAIL'
 export const RESET_CARDS = 'RESET_CARDS'
+export const LOADER = 'LOADER'
 
 
 export function getAllVideogames(){
     let url = 'http://localhost:3001/videogames'
     return function (dispatch) {
+        dispatch({type: LOADER, payload:true})
         return fetch(url)
         .then(res => res.json())
         .then(json => {
-        dispatch({type: GET_ALL_VIDEOGAMES, payload: json})
+            dispatch({type: GET_ALL_VIDEOGAMES, payload: json})
+            
+            dispatch({type: LOADER, payload:false})
         })
         .catch(error => console.warn(error))
     } 
@@ -25,10 +29,12 @@ export function getAllVideogames(){
 export function getVgDetail(id){
     let url = `http://localhost:3001/videogames/${id}`
     return async function (dispatch) {
+        dispatch({type: LOADER, payload:true})
         return await fetch(url)
         .then(res => res.json())
         .then(json => {
-        dispatch({type: GET_VG_DETAILS, payload: json})
+            dispatch({type: GET_VG_DETAILS, payload: json})
+            dispatch({type: LOADER, payload:false})
         })
         .catch(error => console.warn(error))
     } 

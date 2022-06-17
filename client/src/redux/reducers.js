@@ -9,7 +9,8 @@ import {
     SORT_BY_NAME,
     CREATE_VG,
     RESET_DETAIL,
-    RESET_CARDS } from "./actions.js";
+    RESET_CARDS,
+    LOADER, } from "./actions.js";
 
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
     searched: [],
     genres: [],
     newVG: {},
+    loader: false,
 }
 
 
@@ -99,6 +101,11 @@ export default function reducer(state = initialState, action){
             return{
                 ...state,
                 videogames: action.payload
+            }
+        case LOADER:
+            return{
+                ...state,
+                loader: action.payload 
             }
 
         default:
