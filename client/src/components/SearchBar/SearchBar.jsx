@@ -36,7 +36,7 @@ export default function SearchBar({setCurrentPage}) {
 
   return (
 
-    <div>
+    <div className={s.design}>
         <input 
             className={s.input}
             value={name}

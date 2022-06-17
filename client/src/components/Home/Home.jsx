@@ -4,7 +4,7 @@ import Cards from "../Cards/Cards.jsx";
 import Pagination from "../Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideogames } from "../../redux/actions";
-import './Home.css'
+import s from './Home.module.css'
 import Loader from "../Loader/Loader";
 
 
@@ -32,7 +32,7 @@ export default function Home() {
   
 
   return (
-    <div>
+    <div className={s.main}>
       <Navbar
         setCurrentPage={setCurrentPage}
       />
