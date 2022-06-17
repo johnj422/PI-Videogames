@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getVgDetail} from '../../redux/actions'
+import { getVgDetail, resetDetail} from '../../redux/actions'
 import Navbar from '../Navbar/Navbar'
 import s from './VideogameDetail.module.css'
 
@@ -16,6 +16,9 @@ export default function VideogameDetail() {
 
   useEffect(() => {
       dispatch(getVgDetail(id))
+      return () => {
+        dispatch(resetDetail()) 
+      }
   }, [dispatch])
   const detail = useSelector(state => state.vgDetail )
   // function matchReg (str) {

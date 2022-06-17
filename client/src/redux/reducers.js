@@ -7,7 +7,9 @@ import {
     FILTER_BY_DB_OR_API,
     SORT_BY_RATING,
     SORT_BY_NAME,
-    CREATE_VG } from "./actions.js";
+    CREATE_VG,
+    RESET_DETAIL,
+    RESET_CARDS } from "./actions.js";
 
 
 const initialState = {
@@ -79,10 +81,24 @@ export default function reducer(state = initialState, action){
             videogames: action.payload
             }
         case CREATE_VG:
+            if(action.payload.error){
+                alert(action.payload.error)
+                return state;
+            }
             return{
                 
                 ...state,
                 newVG: action.payload
+            }
+        case RESET_DETAIL:
+            return{
+                ...state,
+                vgDetail: action.payload
+            }
+        case RESET_CARDS:
+            return{
+                ...state,
+                videogames: action.payload
             }
 
         default:

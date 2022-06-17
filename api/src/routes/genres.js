@@ -6,9 +6,9 @@ const router = Router();
 router.get('/genres', async (req, res) => {
     try {
         let response = await importGenre()
-        res.json(response)
+        return res.json(response)
     } catch (e) {
-        res.send({error: e})
+        return res.json({error: e})
     }
 })
 

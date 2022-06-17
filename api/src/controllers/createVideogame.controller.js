@@ -13,7 +13,7 @@ async function createVg (obj){
 
     let {name, description, released, rating, genres, platforms, background_image} = obj;
     
-    if(!name || !description || !released || !rating || !genres || !platforms || !background_image) throw 'Missing Information';
+    if(!name || !description || !released || !rating || !genres.length || !platforms || !background_image) throw 'Missing Information';
 
     let genresDB = genres.map(async g => {
         return await Genre.findAll({

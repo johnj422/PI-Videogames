@@ -7,6 +7,8 @@ export const FILTER_BY_DB_OR_API = 'FILTER_BY_DB_OR_API'
 export const SORT_BY_RATING = 'SORT_BY_RATING'
 export const SORT_BY_NAME = 'SORT_BY_NAME'
 export const CREATE_VG = 'CREATE_VG'
+export const RESET_DETAIL = 'RESET_DETAIL'
+export const RESET_CARDS = 'RESET_CARDS'
 
 
 export function getAllVideogames(){
@@ -157,9 +159,21 @@ export function createVG (obj) {
         .then(res => res.json())
         .then(json => (
             dispatch({type: CREATE_VG, payload: json})
-        .then(alert(json))
-            
-    ))
-    .catch(error => console.warn(error))
+            .then(alert(json))
+          
+            ))
+    .catch(error => console.log(error))
+    }
+}
+export function resetDetail (){
+    return {
+        type: RESET_DETAIL,
+        payload: {}
+    }
+}
+export function resetCards (){
+    return {
+        type: RESET_CARDS,
+        payload: []
     }
 }

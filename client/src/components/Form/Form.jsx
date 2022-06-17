@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { createVG } from '../../redux/actions';
 import Navbar from '../Navbar/Navbar'
@@ -48,7 +49,8 @@ export function validate (input){
 }
 export default function Form() {
     let genres = useSelector((state) => state.genres);
-
+    
+    const myRef = useRef(null)
     const dispatch = useDispatch()
     const platforms = [
 		'PC',
@@ -117,8 +119,10 @@ export default function Form() {
         }else(
             setButton(false)
         )
-            
-    },)
+        
+    },[errors, input])
+   
+    
     
     const handleInputChange = function (e) {
         //console.log(e.target.value)
@@ -136,7 +140,7 @@ export default function Form() {
     //         [...input.genres, e.target.value] : input.genres.filter(g => g !== e.target.value)});
            
     //     } 
-    const handleInputAdd = function (e) {
+    const handleInputAdd = (e) => {
         setInput({
             ...input, 
             [e.target.name]: e.target.checked ? 
@@ -165,6 +169,11 @@ export default function Form() {
     const handleSubmit = function (e){
         e.preventDefault()
         dispatch(createVG(input))
+    }
+    const testRef = function(){
+        
+        let value = myRef.current.value
+        console.log(value)
     }
       
 
@@ -226,7 +235,7 @@ export default function Form() {
                                     type='checkbox' 
                                     name='genres'
                                     value={g.name}
-                                    onChange={handleInputAdd}
+                                    onChange={(e) =>handleInputAdd(e)}
                                     ></input>{g.name}</p>)}  
                                        
                             </div>
@@ -243,6 +252,7 @@ export default function Form() {
                                 type='checkbox' 
                                 name='platforms'
                                 value={p}
+                                ref={myRef}
                                 onChange={handleInputAddPlat}
                                 ></input>{p}</p>)}
                             

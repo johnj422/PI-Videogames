@@ -22,6 +22,9 @@ export default function SearchBar({setCurrentPage}) {
     }
     //console.log(name)
     function handleSubmit(click) {
+        if(!name) {
+            alert('Please type a Videogame Name')
+        }
         click.preventDefault()
         //console.log('videogames')
         dispatch(searchVG(name));
@@ -29,6 +32,7 @@ export default function SearchBar({setCurrentPage}) {
         setCurrentPage(1)
     
     }
+
 
   return (
 

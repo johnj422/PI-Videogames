@@ -2,15 +2,19 @@
 import Card from '../Card/Card'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getAllVideogames } from '../../redux/actions'
+import { getAllVideogames, resetCards } from '../../redux/actions'
 import './Cards.css'
 import {Link} from 'react-router-dom'
 
-export default class Cards extends Component {
 
+export class Cards extends Component {
+  
   componentDidMount() {
     // this.props.getAllVideogames()
     //console.log(this.props)
+  }
+  componentWillUnmount(){
+    this.props.resetCards()
   }
   
   render() {
@@ -31,9 +35,9 @@ export default class Cards extends Component {
   }
 }
 
-// function mapStateToProps(state){
-//   return {
-//     videogames: state.videogames
-//   }
-// }
-// export default connect(mapStateToProps, {getAllVideogames})(Cards)
+function mapStateToProps(state){
+  return {
+    videogames: state.videogames
+  }
+}
+export default connect(mapStateToProps, {getAllVideogames, resetCards})(Cards)

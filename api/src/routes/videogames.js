@@ -11,10 +11,10 @@ router.get('/videogames', async (req, res) => {
         if(name) {
             res.json(await findVideogameByName(name))
         }else{
-        res.json(await getAllVG())
+        return res.json(await getAllVG())
         }
     } catch (e) {
-        res.send({error: e})
+        return res.json({error: e})
     }
 })
 
