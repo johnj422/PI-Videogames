@@ -5,6 +5,8 @@ import Pagination from "../Pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllVideogames } from "../../redux/actions";
 import './Home.css'
+import Loader from "../Loader/Loader";
+
 
 
 export default function Home() {
@@ -35,6 +37,7 @@ export default function Home() {
         setCurrentPage={setCurrentPage}
       />
       <body>
+        <Loader />
         <Cards 
           vgToShow={currentVG}
           searchedVG={searchedVG}
