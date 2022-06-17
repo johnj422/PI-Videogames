@@ -38,7 +38,7 @@ export default function Home() {
       />
       <body>
         <Cards 
-          vgToShow={currentVG}
+          currentVG={currentVG}
           searchedVG={searchedVG}
         />
       </body>

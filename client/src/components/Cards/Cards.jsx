@@ -8,9 +8,9 @@ import {Link} from 'react-router-dom'
 import Loader from '../Loader/Loader'
 
 
-export default function Cards() {
+export default function Cards({currentVG}) {
 
-  const vgToShow = useSelector (state => state.videogames);
+  //const vgToShow = useSelector (state => state.videogames);
   const dispatch = useDispatch();
   const loader = useSelector (state => state.loader);
 
@@ -30,7 +30,7 @@ export default function Cards() {
           <div className='cards-container'>
             {loader?
               <Loader />
-              :vgToShow?.map(vg => 
+              :currentVG.map(vg => 
               <Link className='link' to={`/detail/${vg.id}`} 
                 style={{ textDecoration: 'none' }}>
                 <Card 

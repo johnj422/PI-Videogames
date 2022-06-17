@@ -5,11 +5,11 @@ import './Landing.css'
 export default function Landing() {
   return (
     <div className='landing'>
-        <Link to='/home'>
-            <div className='button'>
-                <button >Videogames</button>
+            <div className='stage'>
+              <Link to='/home'>
+                  <button className='btn'>Videogames Info APP</button>
+              </Link>
             </div>
-        </Link>
     </div>
     
   )

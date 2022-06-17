@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { getAllVideogames, searchVG } from '../../redux/actions';
-
+import s from './SearchBar.module.css'
 
 export default function SearchBar({setCurrentPage}) {
 
@@ -38,6 +38,7 @@ export default function SearchBar({setCurrentPage}) {
 
     <div>
         <input 
+            className={s.input}
             value={name}
             type="text" 
             placeholder='Search for a Videogame' 
@@ -49,3 +50,10 @@ export default function SearchBar({setCurrentPage}) {
     </div>
   )
 }
+
+{/* <section class="webdesigntuts-workshop">
+	<form action="" method="">		    
+		<input type="search" placeholder="What are you looking for?">		    	
+		<button>Search</button>
+	</form>
+</section> */}
