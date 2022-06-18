@@ -28,7 +28,7 @@ export default function VideogameDetail() {
   const detail = useSelector(state => state.vgDetail )
   function summary() {
     return { __html: detail.description };
-}
+  }
 
   return (
 
@@ -36,8 +36,10 @@ export default function VideogameDetail() {
       <Navbar />
         {loader? 
         <Loader />
-        :<div 
-          style={detail.background_image ? { backgroundImage: `url(${detail.background_image})` } : { backgroundColor: '#151515' }}
+        :<div className={s.backGround}
+              style={detail.background_image ? { backgroundImage: `url(${detail.background_image})` } : { backgroundColor: '#151515' }}>
+        <div 
+          
           className={s.container}>
           <div className={s.title}>
             <img className={s.titleImg} src='https://i.postimg.cc/Jzt1ZVmF/Play-7.png' alt="title-Img" />
@@ -59,7 +61,7 @@ export default function VideogameDetail() {
               <h4>Platforms:</h4> 
                 <div className={s.platformsList}>   
                   {detail.platforms?.map(g =>
-                    <p> - {g}</p>
+                    <p>{g}</p>
                     )}
                 </div>
             </div>
@@ -67,7 +69,7 @@ export default function VideogameDetail() {
               <h4>Genres:</h4>
                 <div className={s.genresList}>
                   {detail.genres?.map(g =>
-                  <p> - {g.name}</p>
+                  <p>{g.name}</p>
                   )}
                 </div>
             </div>
@@ -80,7 +82,9 @@ export default function VideogameDetail() {
           </div>
 
         </div>
+        </div>
         }
+        
     </div>
         
     
