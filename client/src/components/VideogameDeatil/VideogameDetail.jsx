@@ -26,7 +26,9 @@ export default function VideogameDetail() {
       }
   }, [dispatch])
   const detail = useSelector(state => state.vgDetail )
-
+  function summary() {
+    return { __html: detail.description };
+}
 
   return (
 
@@ -35,7 +37,7 @@ export default function VideogameDetail() {
         {loader? 
         <Loader />
         :<div 
-          background_image={`url()`}
+          style={detail.background_image ? { backgroundImage: `url(${detail.background_image})` } : { backgroundColor: '#151515' }}
           className={s.container}>
           <div className={s.title}>
             <img className={s.titleImg} src='https://i.postimg.cc/Jzt1ZVmF/Play-7.png' alt="title-Img" />
@@ -71,6 +73,9 @@ export default function VideogameDetail() {
             </div>
           </div>
           <div class={s.description}>
+            <p dangerouslySetInnerHTML={summary()}>
+             
+            </p>
             
           </div>
 

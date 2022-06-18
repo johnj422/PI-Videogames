@@ -7,7 +7,10 @@
       "title title title title"
       "image image info info"
       "description description description description";
-      background-color: black;
+     
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-blend-mode:color-dodge
   }
   
   .title {
@@ -34,20 +37,20 @@
     border-radius: 2rem;
 }
   
-  .info {  display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "gameTitle gameTitle gameTitle"
-      "rating rating rating"
-      "released released released"
-      "platforms platforms platforms"
-      "genres genres genres";
-    grid-area: info;
-    color: white;
-  }
+.info {
+  display: grid; 
+  color: white;
+  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "gameTitle gameTitle gameTitle"
+    "rating rating rating"
+    "released released released"
+    "platforms platforms platforms"
+    "genres genres genres"; 
+  grid-area: info; 
+}
   
   .gameTitle { grid-area: gameTitle; }
   
@@ -60,8 +63,18 @@
     display: flex;
     flex-wrap: wrap;
   }
+  .platformsList p {
+    margin: 0 1rem;
+  }
   
   .genres { grid-area: genres; }
+  .genresList {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .genresList p {
+    margin: 0 1rem;
+  }
   
   .description { 
     grid-area: description; 
