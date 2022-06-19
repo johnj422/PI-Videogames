@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createVG } from '../../redux/actions';
 import Navbar from '../Navbar/Navbar'
 import s from './Form.module.css';
-
+import Card from '../Card/Card'
 
 export function validate (input){
     
@@ -175,106 +175,132 @@ export default function Form() {
         let value = myRef.current.value
         console.log(value)
     }
+    function genresToShowPreview(){
+        let genreObj = input.genres.map(g => {
+            let obj = {name: g}
+            return obj
+        })
+        return genreObj
+    }
+    
       
 
   return (
     <div className={s.generalContainer}>
         <Navbar />
             <div className={s.formContainer}>
-                <form onSubmit={(e)=>handleSubmit(e)}>
-                    <label htmlFor='name'>Name</label>
-                    <input 
-                        className={errors.name && s.errors}
-                        onfocus="this.value=''"
-                        type="text" 
-                        name='name' 
-                        value={input.name}
-                        onChange={handleInputChange}
-                        placeholder="Your game's name"/>
-                        {errors.name && <label className={s.errors_label}>{errors.name}</label>}
-                        
-                    <label htmlFor='description'>Description</label>
-                    <input 
-                        className={errors.description && s.errors}
-                        type="text" 
-                        name='description'
-                        value={input.description}
-                        onChange={handleInputChange}
-                        placeholder="Your game's description" />
-                        {errors.description && <label className={s.errors_label}>{errors.description}</label>} 
-                    <label htmlFor='released'>Released</label>
-                    <input 
-                        className={errors.released && s.errors}
-                        type="date" 
-                        name='released' 
-                        min='2000-01-01'
-                        max='2022-12-31'
-                        value={input.released}
-                        onChange={handleInputChange}/>
-                        {errors.released && (<p>{errors.released}</p>)}
-                    <label htmlFor='rating'>Rating</label>
-                    <input 
-                        className={errors.rating && s.errors}
-                        type="number" 
-                        step="any"
-                        name='rating' 
-                        value={input.rating}
-                        onChange={handleInputChange}
-                        min='1' 
-                        max='5'
-                        placeholder="From 1.0 to 5.0"/>
-                        {errors.rating && <label className={s.errors_label}>{errors.rating}</label>} 
-                    <fieldset className={s.genresField} htmlFor='genres'>
-                        <legend
-                            className={errors.genres && s.errors}
-                            >Genres</legend>
-                            <div className={s.checkList}>
-                                {genres?.map(g => 
-                                    <p><input 
-                                    className={errors.genres && s.errors}
-                                    type='checkbox' 
-                                    name='genres'
-                                    value={g.name}
-                                    onChange={(e) =>handleInputAdd(e)}
-                                    ></input>{g.name}</p>)}  
-                                       
-                            </div>
-                                <p>{errors.genres && <label className={s.errors_label}>{errors.genres}</label>}</p> 
-                    </fieldset>
-                    <fieldset className={s.platformsField} htmlFor='platforms'>
-                        <legend
-                            className={errors.platforms && s.errors}
-                        >Platforms</legend> 
-                    <div className={s.checkListPlatform}>
-                        {sortedPlatforms?.map(p => 
-                            <p><input 
-                                className={errors.platforms && s.errors}
-                                type='checkbox' 
-                                name='platforms'
-                                value={p}
-                                ref={myRef}
-                                onChange={handleInputAddPlat}
-                                ></input>{p}</p>)}
+                <div className={s.FormLeftContainer}>
+                    <form onSubmit={(e)=>handleSubmit(e)}>
+                        <label htmlFor='name'>Name</label>
+                            <input 
+                                className={errors.name && s.errors}
+                                onfocus="this.value=''"
+                                type="text" 
+                                name='name' 
+                                value={input.name}
+                                onChange={handleInputChange}
+                                placeholder="Your game's name"/>
+                            {errors.name && <label className={s.errors_label}>{errors.name}</label>}
                             
-                    </div>
-                    <p>{errors.platforms && <label className={s.errors_label}>{errors.platforms}</label>} </p>
-                    </fieldset>
+                        <label htmlFor='description'>Description</label>
+                            <input 
+                                className={errors.description && s.errors}
+                                type="text" 
+                                name='description'
+                                value={input.description}
+                                onChange={handleInputChange}
+                                placeholder="Your game's description" />
+                                {errors.description && <label className={s.errors_label}>{errors.description}</label>} 
+                        <label htmlFor='released'>Released</label>
+                            <input 
+                                className={errors.released && s.errors}
+                                type="date" 
+                                name='released' 
+                                min='2000-01-01'
+                                max='2022-12-31'
+                                value={input.released}
+                                onChange={handleInputChange}/>
+                                {errors.released && (<p>{errors.released}</p>)}
+                        <label htmlFor='rating'>Rating</label>
+                            <input 
+                                className={errors.rating && s.errors}
+                                type="number" 
+                                step="any"
+                                name='rating' 
+                                value={input.rating}
+                                onChange={handleInputChange}
+                                min='1' 
+                                max='5'
+                                placeholder="From 1.0 to 5.0"/>
+                                {errors.rating && <label className={s.errors_label}>{errors.rating}</label>} 
+                        <label htmlFor='background_image'>Image</label>
+                            <input 
+                                className={errors.background_image && s.errors}
+                                type="text" 
+                                name='background_image' 
+                                value={input.background_image}
+                                onChange={handleInputChange}
+                                placeholder="https://yourimageurl.com/image.jpeg or png"/>
+                                {errors.background_image && <label className={s.errors_label}>{errors.background_image}</label>}
 
-                    <label htmlFor='background_image'>Image</label>
-                    <input 
-                        className={errors.background_image && s.errors}
-                        type="text" 
-                        name='background_image' 
-                        value={input.background_image}
-                        onChange={handleInputChange}
-                        placeholder="https://yourimageurl.com/image.jpeg or png"/>
-                        {errors.background_image && <label className={s.errors_label}>{errors.background_image}</label>}
-                    <button 
-                        type='submit'
-                        className={ button ? s.submitDis : s.submit} 
-                        
-                        >Create Videogame</button>
-                </form>
+                        <div className={s.genPlatContainer}>
+                            <div className={s.genresChecklistContainer}>
+                                <fieldset className={s.genresField} htmlFor='genres'>
+                                    <legend
+                                        className={errors.genres && s.errors}
+                                        >Genres</legend>
+                                        <div className={s.checkListGenres}>
+                                            {genres?.map(g => 
+                                                <p><input 
+                                                className={errors.genres && s.errors}
+                                                type='checkbox' 
+                                                name='genres'
+                                                value={g.name}
+                                                onChange={(e) =>handleInputAdd(e)}
+                                                ></input>{g.name}</p>)}  
+                                                
+                                        </div>
+                                            <p>{errors.genres && <label className={s.errors_label}>{errors.genres}</label>}</p> 
+                                </fieldset>
+                        </div>
+                        <div className={s.platformsChecklistContainer}>
+                        <fieldset className={s.platformsField} htmlFor='platforms'>
+                            <legend
+                                className={errors.platforms && s.errors}
+                            >Platforms</legend> 
+                        <div className={s.checkListPlatform}>
+                            {sortedPlatforms?.map(p => 
+                                <p><input 
+                                    className={errors.platforms && s.errors}
+                                    type='checkbox' 
+                                    name='platforms'
+                                    value={p}
+                                    onChange={handleInputAddPlat}
+                                    ></input>{p}</p>)}
+                                
+                        </div>
+                        <p>{errors.platforms && <label className={s.errors_label}>{errors.platforms}</label>} </p>
+                        </fieldset>
+                        </div>
+
+                        </div>
+
+                    
+                        <button 
+                            type='submit'
+                            className={ button ? s.submitDis : s.submit} 
+                            
+                            >Create Videogame</button>
+                    </form>
+                </div>
+                <div className={s.previewContainer}>
+                    <Card 
+                        image={input.background_image}
+                        name={input.name}
+                        genres={genresToShowPreview()}
+                    />
+
+                </div>
             </div>
         
     </div>

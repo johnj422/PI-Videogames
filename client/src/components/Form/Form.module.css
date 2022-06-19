@@ -2,12 +2,14 @@
     color: rgb(93, 93, 93);
 }
 .formContainer {
-    margin-top: 3rem;
+    margin-top: 0rem;
     display: flex;
     padding-bottom: 3rem;
+    border: 2px solid red;
+    justify-content: center;
 }
 .formContainer form {
-    margin: 0 auto;
+    padding-left: 4rem;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -21,18 +23,28 @@
 .formContainer label {
     margin-top: 1rem;
 }
-
-.checkList {
+.genPlatContainer {
+    display: flex;
+    height: 22rem;
+}
+.platformsChecklistContainer {
+    position: relative;
+    top: -18.3rem;
+}
+.checkListGenres {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    height: 17.5rem;
+    height: 18rem;
+    width: 20rem;
 }
 .checkListPlatform {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    height: 30rem;
+    height: 37.3rem;
+    width: 30rem;
+
 }
 
 .genresField {
@@ -40,7 +52,7 @@
     align-items: baseline;
     padding: 1rem 10px;
 }
-.checkList p, .checkListPlatform p {
+.checkListGenres p, .checkListPlatform p {
     display: flex;
     width: 10rem;
     flex-direction: row;
@@ -49,11 +61,15 @@
     margin: 10px 0;
     font-size: small;
 }
-.checkList input, .checkListPlatform input {
+.checkListGenres input, .checkListPlatform input {
     width: 1rem;
 }
 .platformsField .platformField{
     height: 30rem;
+}
+.previewContainer {
+    margin: 0 auto;
+    padding-top: 10rem;
 }
 
 /* Errores */
@@ -77,5 +93,5 @@
     display: block;
     margin-top: 1.5rem;
     height: 3rem;
-    width: 30.5rem;
+    width: 62.2rem;
   }
