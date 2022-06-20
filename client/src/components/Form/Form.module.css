@@ -145,7 +145,16 @@ textarea {
     position: relative;
     bottom: 2.5rem;
 }
-.checkListGenres p, .checkListPlatform p {
+.checkListGenres p {
+    display: flex;
+    width: 8rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: left;
+    margin: 3px 0;
+    font-size: small;
+}
+.checkListPlatform p {
     display: flex;
     width: 7rem;
     flex-direction: row;
@@ -172,11 +181,7 @@ textarea {
 
   }
   
-  .errors {
 
-
- 
-  }
   .submitDis {
     display: none;
   }

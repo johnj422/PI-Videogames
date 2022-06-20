@@ -172,12 +172,17 @@ export default function Form() {
     const handleSubmit = function (e){
         e.preventDefault()
         dispatch(createVG(input))
+        setInput({
+            name: '',
+            description: '',
+            released: '',
+            rating: null,
+            genres: [],
+            platforms: [],
+            background_image: ''
+        })
     }
-    const testRef = function(){
-        
-        let value = myRef.current.value
-        console.log(value)
-    }
+    
     function genresToShowPreview(){
         let genreObj = input.genres.map(g => {
             let obj = {name: g}
