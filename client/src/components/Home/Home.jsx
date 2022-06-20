@@ -9,11 +9,13 @@ import Loader from "../Loader/Loader";
 
 
 
+
 export default function Home() {
   
   const dispatch = useDispatch();
   const allVG = useSelector((state) => state.videogames);
   const searchedVG = useSelector((state) => state.searched);
+  const loader = useSelector(state => state.loader)
   //console.log(searchedVG)
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,13 +44,15 @@ export default function Home() {
           searchedVG={searchedVG}
         />
       </body>
-      
+      {!loader? 
       <Pagination
         VGperPage={VGperPage}
         allVG={allVG.length}
         paginating={paginating}
         currentPage={currentPage}
       />
+      :null
+      }
     </div>
   )
 }

@@ -9,6 +9,7 @@ export const SORT_BY_NAME = 'SORT_BY_NAME'
 export const CREATE_VG = 'CREATE_VG'
 export const RESET_DETAIL = 'RESET_DETAIL'
 export const RESET_CARDS = 'RESET_CARDS'
+export const RESET_CREATE = 'RESET_CREATE'
 export const LOADER = 'LOADER'
 
 
@@ -171,7 +172,7 @@ export function createVG (obj) {
     .catch(error => console.log(error))
     }
 }
-export function resetDetail (){
+export function resetDetail (){ 
     return {
         type: RESET_DETAIL,
         payload: {}
@@ -180,6 +181,12 @@ export function resetDetail (){
 export function resetCards (){
     return {
         type: RESET_CARDS,
+        payload: []
+    }
+}
+export function resetCreate (){
+    return {
+        type: RESET_CREATE,
         payload: []
     }
 }

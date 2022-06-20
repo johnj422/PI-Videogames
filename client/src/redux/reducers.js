@@ -10,7 +10,8 @@ import {
     CREATE_VG,
     RESET_DETAIL,
     RESET_CARDS,
-    LOADER, } from "./actions.js";
+    LOADER,
+    RESET_CREATE } from "./actions.js";
 
 
 const initialState = {
@@ -101,6 +102,11 @@ export default function reducer(state = initialState, action){
             return{
                 ...state,
                 videogames: action.payload
+            }
+        case RESET_CREATE:
+            return{
+                ...state,
+                newVG: action.payload
             }
         case LOADER:
             return{

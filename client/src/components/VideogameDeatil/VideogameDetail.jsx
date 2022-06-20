@@ -42,7 +42,7 @@ export default function VideogameDetail() {
           
           className={s.container}>
           <div className={s.title}>
-            <img className={s.titleImg} src='https://i.postimg.cc/Jzt1ZVmF/Play-7.png' alt="title-Img" />
+            <img className={s.titleImg} src='https://i.postimg.cc/pV14kSrT/Play-9.png' alt="title-Img" />
           </div>
           <div className={s.image}>
                <img src={detail.background_image} alt="VG Image" />

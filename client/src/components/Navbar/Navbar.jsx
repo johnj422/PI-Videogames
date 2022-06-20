@@ -47,7 +47,7 @@ function Navbar ({setCurrentPage}){
                 <div className='logo'>  
                     <Link to='/home' onClick={(c) => click(c)}>
                         {/* <h1 className='title'>Videogames APP</h1> */}
-                        <img src='https://i.postimg.cc/httscMgg/Play-6.png' alt="LogoIMG" />  
+                        <img src='https://i.postimg.cc/nzy6nd5Z/Play-12.png' alt="LogoIMG" />  
                     </Link>
                 </div>
                 <div className={URLactual.includes('detail')|| URLactual.includes('create')? 'displayNone' : 'search'}>

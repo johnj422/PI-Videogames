@@ -27,7 +27,8 @@ li button {
 }
 li button:hover {
     background-color: rgba(0, 255, 255, 0);
-    scale: 120%;
+    scale: 200%;
+    cursor: pointer;
     
 }
 .activePage{

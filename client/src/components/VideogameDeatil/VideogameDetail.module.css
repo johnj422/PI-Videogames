@@ -4,53 +4,47 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .container {  display: grid;
-    grid-template-columns: 1fr 1fr 0.8fr;
-    grid-template-rows: 0.3fr 1.7fr 1fr;
-    gap: 0px 0px;
-    grid-auto-flow: row;
-    grid-template-areas:
-      "title title title title"
-      "image image info info"
-      "description description description description";
-     
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-blend-mode:color-dodge;
-      background-color: rgba(0, 0, 0, 0.58);
-      width: 70%;
-      justify-self: center;
-      margin: 0 auto;
-      border-radius: .5rem;
-     
-  }
-  
-  .title {
-
-
-    grid-area: title;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.429);
-    border-top-left-radius: .5rem;
-    border-top-right-radius: .5rem;
-
-  }
-  .title img{
-    width: 60%;
-    margin-left: 14rem;
-  }
-  
-  .image { 
+  grid-template-columns: 1fr 1fr 0.8fr;
+  grid-template-rows: 0.3fr 1.7fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "title title title title"
+    "image image info info"
+    "description description description description";
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode:color-dodge;
+    background-color: rgba(0, 0, 0, 0.58);
+    width: 80%;
     justify-self: center;
-    align-self: center;
-    margin: auto 0;
-    grid-area: image; 
-    width: 40rem;
-    height: 30rem;
-    overflow: hidden;
-    border-radius: 1rem;
-  
+    margin: 0 auto;
+    border-radius: .5rem;
+    box-shadow: 0 0 5rem 1rem;
+    
+}
+.title {
+  grid-area: title;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.429);
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+}
+.title img{
+  width: 60%;
+  margin-left: 14rem;
+}
+.image { 
+  justify-self: center;
+  align-self: center;
+  margin: auto 0;
+  grid-area: image; 
+  width: 40rem;
+  height: 30rem;
+  overflow: hidden;
+  border-radius: 1rem;
 }
 .image img {
     width: 140%;
@@ -59,7 +53,6 @@
     left: -13rem;
     border-radius: 1rem;
 }
-  
 .info {
   display: grid; 
   color: white;
@@ -73,72 +66,71 @@
     "platforms platforms platforms"
     "genres genres genres"; 
   grid-area: info; 
+} 
+.gameTitle { 
+  grid-area: gameTitle; 
+  border-bottom: 10px solid rgba(255, 255, 255, 0.574);
+} 
+.rating { 
+  grid-area: rating; 
+  border-bottom: 7px solid rgba(255, 255, 255, 0.574);
 }
   
-  .gameTitle { 
-    grid-area: gameTitle; 
-    border-bottom: 10px solid rgba(255, 255, 255, 0.574);
-  }
+.released { 
+  grid-area: released; 
+  border-bottom: 7px solid rgba(255, 255, 255, 0.574);
+}
   
-  .rating { 
-    grid-area: rating; 
-    border-bottom: 7px solid rgba(255, 255, 255, 0.574);
-  }
-  
-  .released { 
-    grid-area: released; 
-    border-bottom: 7px solid rgba(255, 255, 255, 0.574);
-  }
-  
-  .platforms { 
+.platforms { 
     grid-area: platforms; 
     border-bottom: 5px solid rgba(255, 255, 255, 0.574);
-  }
-  .platformsList{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .platformsList p {
-    margin: 0 1rem;
-    background-color: rgba(0, 0, 0, 0.33);
-    border: 1px solid white;
-    padding: 0 .5rem;
-    margin-bottom: .5rem;
-    border-radius: .5rem;
-    font-size: .8rem;
-    width: 6.3rem;
-    text-align: center;
-  }
+}
+.platformsList{
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: .5rem;
+}
+.platformsList p {
+  margin: 0 1rem;
+  background-color: rgba(0, 0, 0, 0.33);
+  border: 1px solid white;
+  padding: 0 .5rem;
+  margin-bottom: .5rem;
+  border-radius: .5rem;
+  font-size: .8rem;
+  width: 6.5rem;
+  text-align: center;
+}
   
-  .genres { grid-area: genres; }
-  .genresList {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .genresList p {
-    margin: 0 .8rem;
-    background-color: rgba(0, 0, 0, 0.33);
-    border: 1px solid white;
-    padding: 0 .5rem;
-    margin-bottom: .5rem;
-    border-radius: .5rem;
-    font-size: .8rem;
-    width: 6.5rem;
-    text-align: center;
-  }
-  
-  .description { 
-    grid-area: description; 
-    color: rgb(201, 201, 201);
-    padding-left: 5rem;
-    padding-right: 2rem;
-    text-align: justify;
-    background-color: rgba(0, 0, 0, 0.429);
+.genres { grid-area: genres; }
+.genresList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: .5rem;
+}
+.genresList p {
+  margin: 0 .8rem;
+  background-color: rgba(0, 0, 0, 0.33);
+  border: 1px solid white;
+  padding: 0 .5rem;
+  margin-bottom: .5rem;
+  border-radius: .5rem;
+  font-size: .8rem;
+  width: 6.5rem;
+  text-align: center;
+} 
+.description { 
+  grid-area: description; 
+  color: rgb(201, 201, 201);
+  padding-left: 3rem;
+  padding-right: 2rem;
+  text-align: justify;
+  background-color: rgba(0, 0, 0, 0.429);
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
 }
 .description p {
-
-  
-  padding: .5rem;
+  padding: .2rem;
   border-radius: 1rem;
 }
   
