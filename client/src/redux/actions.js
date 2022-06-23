@@ -15,9 +15,9 @@ export const LOADER = 'LOADER'
 
 export function getAllVideogames(){
     let url = 'http://localhost:3001/videogames'
-    return function (dispatch) {
+    return async function (dispatch) {
         dispatch({type: LOADER, payload:true})
-        return fetch(url)
+        return await fetch(url)
         .then(res => res.json())
         .then(json => {
             dispatch({type: GET_ALL_VIDEOGAMES, payload: json})
@@ -119,7 +119,7 @@ export function sortByRating(value){
             dispatch({type: SORT_BY_RATING, payload: vgSortedDec})
         }
         })
-        //.catch(error => console.warn(error))
+        .catch(error => console.warn(error))
     } 
 }
 export function sortByName(value){
@@ -137,10 +137,8 @@ export function sortByName(value){
             (a.name.toLowerCase() === b.name.toLowerCase() ? 0 
             : a.name.toLowerCase() > b.name.toLowerCase() ? 1 
             : -1))   
-              
             //console.log(vgSortedAsc)
             dispatch({type: SORT_BY_NAME, payload: vgSortedAsc})
-        
         }
         if (value === 'descending'){                
             let vgSortedDec = json.sort((a,b) =>  
@@ -151,7 +149,7 @@ export function sortByName(value){
             dispatch({type: SORT_BY_NAME, payload: vgSortedDec})
         }
         })
-        //.catch(error => console.warn(error))
+        .catch(error => console.warn(error))
     } 
 }
 export function createVG (obj) {

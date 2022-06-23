@@ -31,28 +31,24 @@ export default function Home() {
     dispatch(getAllVideogames());
   }, [dispatch])
 
-  
-
   return (
     <div className={s.main}>
-      <Navbar
-        setCurrentPage={setCurrentPage}
-      />
-  
+        <Navbar
+          setCurrentPage={setCurrentPage}
+        />
         <Cards 
           currentVG={currentVG}
           searchedVG={searchedVG}
         />
-   
-      {!loader? 
-      <Pagination
-        VGperPage={VGperPage}
-        allVG={allVG.length}
-        paginating={paginating}
-        currentPage={currentPage}
-      />
-      :null
-      }
+        {!loader? 
+        <Pagination
+          VGperPage={VGperPage}
+          allVG={allVG.length}
+          paginating={paginating}
+          currentPage={currentPage}
+        />
+        :null
+        }
     </div>
   )
 }

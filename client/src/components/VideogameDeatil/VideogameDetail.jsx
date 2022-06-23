@@ -39,7 +39,6 @@ export default function VideogameDetail() {
         :<div className={s.backGround}
               style={detail.background_image ? { backgroundImage: `url(${detail.background_image})` } : { backgroundColor: '#151515' }}>
         <div 
-          
           className={s.container}>
           <div className={s.title}>
             <img className={s.titleImg} src='https://i.postimg.cc/pV14kSrT/Play-9.png' alt="title-Img" />
@@ -75,18 +74,11 @@ export default function VideogameDetail() {
             </div>
           </div>
           <div class={s.description}>
-            <p dangerouslySetInnerHTML={summary()}>
-             
-            </p>
-            
+            <p dangerouslySetInnerHTML={summary()}></p>
           </div>
-
         </div>
         </div>
         }
-        
-    </div>
-        
-    
+    </div>    
   )
 }

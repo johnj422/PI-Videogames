@@ -148,7 +148,7 @@ export default function Form() {
             ...input, 
             [e.target.name]: e.target.value
         }))
-        } 
+    } 
     const handleInputAddPlat = function (e) {
         setInput({
             ...input, 
@@ -159,7 +159,7 @@ export default function Form() {
             ...input, 
             [e.target.name]: e.target.value
         }))
-        } 
+    } 
     const handleSubmit = function (e){
         e.preventDefault()
         dispatch(createVG(input))
@@ -184,6 +184,7 @@ export default function Form() {
             document.getElementById(`${j} p`).checked = false
             }
         }
+        
 
     }
     
@@ -195,8 +196,6 @@ export default function Form() {
         return genreObj
     }
     
-      
-
   return (
     <div className={s.generalContainer}>
         <Navbar />

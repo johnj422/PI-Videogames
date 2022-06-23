@@ -18,14 +18,11 @@ export default function Cards({currentVG}) {
     if(!loader){
       dispatch(getAllVideogames())
     }
-  
     return () => {
       dispatch(resetCards())
     }
   }, [])
   
-
-
   return (
           <div className='cards-container'>
             {loader?
