@@ -133,6 +133,7 @@ textarea {
 .rightContainer {
     width: 30%;
     justify-content: center;
+    text-align: center;
 }
 .previewContainer {
     margin: 0 auto;
@@ -141,7 +142,7 @@ textarea {
 }
 .rightContainer button {
     width: 14rem;
-    margin-left: 7rem;
+    margin-left: 6.2rem;
     position: relative;
     bottom: 2.5rem;
 }
@@ -199,5 +200,15 @@ textarea {
     cursor: pointer;
     scale: 110%;
   }
+.confirm {
+    position: relative;
+    bottom: 2.5rem;
+    font-size: 1.5rem;
+    color: rgb(135, 181, 56);
+    background-color:  rgba(0, 0, 0, 0.503);
+    border-top-right-radius: .5rem;
+    border-bottom-right-radius: .5rem;
+}
+
 
   

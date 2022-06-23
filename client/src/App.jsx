@@ -13,7 +13,6 @@ function App() {
     <>
       <Routes>
         <Route exact path='/' element={<Landing/>} />
-        <Route path='/' element={<ErrorPage/>} />
         <Route exact path='/home' element={<Home/>} />
         <Route exact path='/create' element={<Form/>} />
         <Route exact path='/detail/:id' element={<VideogameDetail/>} />

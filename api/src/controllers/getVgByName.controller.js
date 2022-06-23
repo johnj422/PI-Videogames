@@ -7,7 +7,6 @@ const findVideogameByName = async (name) => {
 
     let gameByName = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&search=${name}&page_size=15`);
     //console.log(gameByName.data.results[0].name)
-    //if(gameByName.data.results.length === 0) throw `Game ${name} not found`;
     let gameByNameModified = gameByName.data.results.map(game => {
         //console.log(game.name)
         let gameToShow = {

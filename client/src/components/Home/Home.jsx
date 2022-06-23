@@ -22,7 +22,7 @@ export default function Home() {
   const [VGperPage, setVGperPage] = useState(15);
   const indexOfLastVD = currentPage * VGperPage;
   const indexOfFirstVG = indexOfLastVD - VGperPage;
-  const currentVG = allVG.slice(indexOfFirstVG, indexOfLastVD);
+  const currentVG = allVG?.slice(indexOfFirstVG, indexOfLastVD);
   //console.log(currentVG)
   const paginating = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -38,12 +38,12 @@ export default function Home() {
       <Navbar
         setCurrentPage={setCurrentPage}
       />
-      <body>
+  
         <Cards 
           currentVG={currentVG}
           searchedVG={searchedVG}
         />
-      </body>
+   
       {!loader? 
       <Pagination
         VGperPage={VGperPage}

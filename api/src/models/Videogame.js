@@ -36,21 +36,9 @@ module.exports = (sequelize) => {
     }, 
     background_image: {
       type: DataTypes.TEXT,
-      defaultValue: 'https://i1.sndcdn.com/avatars-rdzlKhnEALWDHlBy-cB4kyA-t500x500.jpg', // cambiar imagen
-      allowNull: true,
     },
   },
   {
     timestamps: false,
   });
 };
-
-
-// [ ] Videojuego con las siguientes propiedades:
-// ID: * No puede ser un ID de un videojuego ya existente en la API rawg  -->Done
-// Nombre *                                                               -->Done
-// Descripción *                                                          -->Done      
-// Fecha de lanzamiento                                                   -->Done
-// Rating                                                                 -->Done
-// Plataformas *                                                          -->Done
-

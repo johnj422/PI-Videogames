@@ -13,9 +13,10 @@ async function getAllVG (){
         let pags = `https://api.rawg.io/api/games?key=${API_KEY}&page=${page}`;
         hundredGames.push(pags);
     }
+    //console.log(hundredGames)
     const gamesRaw = await Promise.all(hundredGames.map((vg) => 
-    axios(vg).then((r) => r.data.results)));
-   
+        axios(vg).then((r) => r.data.results)));
+        //console.log(gamesRaw)
     let gamesProcesed = gamesRaw.flat();
 
     let gamesAPI = []
@@ -23,11 +24,8 @@ async function getAllVG (){
         let { id, name, genres, background_image, rating } = game;
         gamesAPI.push({ id, name, genres, background_image, rating })
         }
-        
-        //return gamesAPI;
 
     let gamesDB = await Videogame.findAll({include: Genre});
-
 
     gamesDB = gamesDB.map(game => {
         //console.log(game.dataValues)
@@ -40,11 +38,7 @@ async function getAllVG (){
         }
         return gameDBToShow
     })
-    
     return gamesAPI.concat(gamesDB)
-
-
-    
 }
 
 module.exports = {

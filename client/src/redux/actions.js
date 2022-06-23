@@ -166,7 +166,7 @@ export function createVG (obj) {
         .then(res => res.json())
         .then(json => (
             dispatch({type: CREATE_VG, payload: json})
-            .then(alert(json))
+            // .then(alert(json))
           
             ))
     .catch(error => console.log(error))

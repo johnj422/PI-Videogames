@@ -10,7 +10,6 @@ const importGenre = async () => {
     const genresRes = genresAPI.data.results;
     const names = genresRes.map(genre => genre.name);
     //console.log(names)
-
     names.map(name => {
         Genre.findOrCreate({
             where: {
@@ -18,27 +17,9 @@ const importGenre = async () => {
             }
         })
     });
-
     let results = await Genre.findAll();
     return results;
-
-    // genresRes.forEach(async (g) => {
-    //     //console.log(g.name)
-    //     await Genre.findOrCreate({
-    //         where: {
-    //             name: g.name,
-    //         }
-    //     })
-    // });
-    // const genresToPush = genresRes.map(genre => {
-    //     return {
-    //         id: genre.id,
-    //         name: genre.name,
-    //     };
-    // });
-    //return Genre.findAll();
 }
-
 module.exports = {
     importGenre,
 }

@@ -7,9 +7,7 @@ router.get('/videogames/:id', async (req, res) => {
     let {id} = req.params
     
     try {
-       
         return res.json(await findVideogameByID(id))
-        
     } catch (e) {
         return res.send('Videogame doesn`t exists')
     }

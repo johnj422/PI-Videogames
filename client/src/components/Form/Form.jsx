@@ -10,7 +10,7 @@ export function validate (input){
     
     let regex = {
         name: /^[\w -]+$/,
-        description: /^[a-zA-ZÀ-ÿ0-9\s]{2,50}$/, //Solo letras y números
+        description: /^[a-zA-ZÀ-ÿ0-9\s\.]{2,50}$/, //Solo letras y números
         rating: /^([0-4]{1}(\.\d{1,2})?|5(.0{1,2})?)$/,
         background_image: /^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:[/?#]\S*)?$/i,
     } 
@@ -29,7 +29,7 @@ export function validate (input){
     if(!input.rating) {
         errors.rating = 'Rating is required'
     }else if(!regex.rating.test(input.rating)){
-        errors.rating = 'Rating Values between 1.0-5.0'
+        errors.rating = 'Rating Values between 0.0-5.0'
     }
     if(!input.released) {
         errors.released = 'Date is required'
@@ -50,7 +50,6 @@ export function validate (input){
 export default function Form() {
     let genres = useSelector((state) => state.genres);
     
-    const myRef = useRef(null)
     const dispatch = useDispatch()
     const platforms = [
 		'PC',
@@ -91,6 +90,7 @@ export default function Form() {
         'Xbox',
 	];
     const [ button, setButton ] = useState(true)
+    const [ button2, setButton2 ] = useState(false)
 
     const sortedPlatforms = platforms.sort((a,b) => a.toLowerCase() > b.toLowerCase())
     //console.log(sortedPlatforms)
@@ -125,8 +125,6 @@ export default function Form() {
         
     },[errors, input])
    
-    
-    
     const handleInputChange = function (e) {
         //console.log(e.target.value)
         setInput({
@@ -138,11 +136,7 @@ export default function Form() {
             [e.target.name]: e.target.value
         }))
     } 
-    // const handleInputAdd = function (e) {
-    //     setInput({...input, [e.target.name]: !input.genres.includes(e.target.value) ? 
-    //         [...input.genres, e.target.value] : input.genres.filter(g => g !== e.target.value)});
-           
-    //     } 
+
     const handleInputAdd = (e) => {
         setInput({
             ...input, 
@@ -150,7 +144,6 @@ export default function Form() {
             [...input.genres, e.target.value] : 
             input.genres.filter(g => g !== e.target.value)
         });
-
         setErrors(validate({
             ...input, 
             [e.target.name]: e.target.value
@@ -162,12 +155,10 @@ export default function Form() {
             [e.target.name]: e.target.checked ? 
             [...input.platforms, e.target.value] : 
             input.platforms.filter(p => p !== e.target.value)});
-
         setErrors(validate({
             ...input, 
             [e.target.name]: e.target.value
         }))
-            
         } 
     const handleSubmit = function (e){
         e.preventDefault()
@@ -176,11 +167,24 @@ export default function Form() {
             name: '',
             description: '',
             released: '',
-            rating: null,
+            rating: '',
             genres: [],
             platforms: [],
             background_image: ''
         })
+        if(input.genres.length){
+        for (let i = 0; i < 19; i++) {
+            
+            document.getElementById(`${i} g`).checked = false
+            
+            }
+        } 
+        if(input.platforms.length){ 
+        for (let j = 0; j < platforms.length; j++){
+            document.getElementById(`${j} p`).checked = false
+            }
+        }
+
     }
     
     function genresToShowPreview(){
@@ -234,7 +238,7 @@ export default function Form() {
                                         onChange={handleInputChange}
                                         min='1' 
                                         max='5'
-                                        placeholder="From 1.0 to 5.0"/>
+                                        placeholder="From 0.0 to 5.0"/>
                                         {errors.rating && <label className={s.errors_label}>{errors.rating}</label>} 
                             </div>
                             <div className={s.genresChecklistContainer}>
@@ -243,10 +247,11 @@ export default function Form() {
                                             className={errors.genres && s.errors}
                                             >Genres</legend>
                                             <div className={s.checkListGenres}>
-                                                {genres?.map(g => 
+                                                {genres?.map((g,index) => 
                                                     <p><input 
                                                     className={errors.genres && s.errors}
                                                     type='checkbox' 
+                                                    id={`${index} g`}
                                                     name='genres'
                                                     value={g.name}
                                                     onChange={(e) =>handleInputAdd(e)}
@@ -285,10 +290,11 @@ export default function Form() {
                                         className={errors.platforms && s.errors}
                                     >Platforms</legend> 
                                     <div className={s.checkListPlatform}>
-                                        {sortedPlatforms?.map(p => 
+                                        {sortedPlatforms?.map((p, index) => 
                                             <p><input 
                                                 className={errors.platforms && s.errors}
-                                                type='checkbox' 
+                                                type='checkbox'
+                                                id={`${index} p`} 
                                                 name='platforms'
                                                 value={p}
                                                 onChange={handleInputAddPlat}
@@ -311,8 +317,10 @@ export default function Form() {
                         <button 
                         type='submit'
                         className={ button ? s.submitDis : s.submit} 
-                        
+                        onClick={() => input.genres.length > 0 && input.platforms.length > 0 ? setButton2(true) : setButton2(false)}
                         >Create Videogame</button>
+                        {console.log(Object.entries(errors))}
+                        {button2 === true && (<p className={s.confirm}>{`Videogame succesfully created`}</p>)}
                     </div>
                 </form>                               
             </div>       
